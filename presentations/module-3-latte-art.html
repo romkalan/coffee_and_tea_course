@@ -32,7 +32,16 @@
       display:flex;flex-direction:column;justify-content:center;
       padding:var(--pad);position:relative;overflow:hidden;flex-shrink:0
     }
-    .slide.light{background:#f5f5f5;color:#111}
+    .slide.light{background:#f5f5f5;color:#111;--accent-r:#7a7a00}
+    .slide.light .module-badge,
+    .slide.light .nb .nb-label,
+    .slide.light .ba-card .label,
+    .slide.light .scheme-item .label,
+    .slide.light .term-list li strong,
+    .slide.light .stepper-item .circle,
+    .slide.light .step:not(:last-child)::after{color:var(--accent-r)}
+    .slide.light .compare-table th{color:var(--accent-r);border-bottom-color:var(--accent-r)}
+    .slide.light .stepper-item .circle{border-color:var(--accent-r)}
     .slide.dark{background:var(--bg);color:var(--fg)}
     .slide.hero{justify-content:center}
     .slide.center{align-items:center;text-align:center}
