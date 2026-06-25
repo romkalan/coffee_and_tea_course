@@ -9,7 +9,7 @@
 ├── index.html                          # Главная страница-навигатор
 ├── brand-spec.md                       # Спецификация дизайн-системы
 ├── presentations/
-│   ├── module-0-coffee-tea-basics.html   # Модуль 0 — Основы кофе и чая (12 слайдов)
+│   ├── module-0-coffee-tea-basics.html   # Вводный модуль — Основы кофе и чая (12 слайдов)
 │   ├── module-1-cupping.html             # Модуль 1 — Каппинг и органолептика (11 слайдов)
 │   ├── module-2-espresso.html            # Модуль 2 — Эспрессо и кофемашина (11 слайдов)
 │   ├── module-3-latte-art.html           # Модуль 3 — Латте-арт (11 слайдов)
