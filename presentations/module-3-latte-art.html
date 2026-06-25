@@ -47,6 +47,9 @@
     .slide.center{align-items:center;text-align:center}
     .content{max-width:min(90vw,1000px);width:100%}
     .slide.center .content{max-width:min(90vw,800px)}
+    .slide h1, .slide h2 { font-family: var(--font-display); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; }
+    .slide h1 { font-size: clamp(2rem, 5vw, 3.6rem); margin-bottom: 0.3em; }
+    .slide h2 { font-size: clamp(1.5rem, 3.5vw, 2.4rem); margin-bottom: 0.5em; }
     .module-badge{
       font-family:var(--font-mono);font-size:var(--small);text-transform:uppercase;
       letter-spacing:.1em;color:var(--accent);margin-bottom:clamp(6px,.8vw,12px)
@@ -454,30 +457,22 @@
     </section>
 
     <section class="slide dark">
-      <div class="content">
-        <div class="module-badge">Модуль 3 · Контрольные вопросы</div>
-        <h2 class="h-xl">Контрольные вопросы</h2>
-        <div class="sep left"></div>
-        <ul class="term-list">
-          <li>Какие 4 этапа вспенивания молока?</li>
-          <li>Какая температура молока считается оптимальной для латте?</li>
-          <li>Какие базовые рисунки латте-арта осваивают в первую очередь?</li>
-          <li>Почему важно слушать молоко во время вспенивания?</li>
-        </ul>
-      </div>
+      <h2>Контрольные вопросы</h2>
+      <ul>
+        <li>Какие 4 этапа вспенивания молока?</li>
+        <li>Какая температура молока считается оптимальной для латте?</li>
+        <li>Какие базовые рисунки латте-арта осваивают в первую очередь?</li>
+        <li>Почему важно слушать молоко во время вспенивания?</li>
+      </ul>
     </section>
 
     <section class="slide hero dark center">
-      <div class="content">
-        <div class="module-badge">Модуль 3</div>
-        <h1 class="h-xl">Спасибо за внимание!</h1>
-        <div class="sep"></div>
-        <p class="lead">Центр профессионального кофе</p>
-        <p class="subtitle">Модуль 3 · Латте-арт</p>
-        <div class="end-buttons">
-          <button class="btn" onclick="document.querySelector('.slide').scrollIntoView({behavior:'smooth'})">Вернуться к началу</button>
-          <button class="btn btn-outline" onclick="window.location.href='/coffee_and_tea_course/'">На главную</button>
-        </div>
+      <h1 style="font-size:clamp(2rem,5vw,3.6rem);">Спасибо за внимание!</h1>
+      <p class="subtitle">Центр профессионального кофе</p>
+      <p class="subtitle">Модуль 3 · Латте-арт</p>
+      <div class="end-buttons">
+        <button class="btn" onclick="document.querySelector('.slide').scrollIntoView({behavior:'smooth'})">Вернуться к началу</button>
+        <button class="btn btn-outline" onclick="window.location.href='/coffee_and_tea_course/'">На главную</button>
       </div>
     </section>
 
