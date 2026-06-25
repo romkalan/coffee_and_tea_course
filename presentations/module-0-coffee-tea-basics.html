@@ -338,6 +338,11 @@
     @media (pointer: coarse) {
       .deck-hint { display: none; }
     }
+.end-buttons { display: flex; gap: 16px; justify-content: center; margin-top: 2em; flex-wrap: wrap; }
+.btn { display: inline-block; padding: 12px 28px; border-radius: 8px; font-family: var(--font-body); font-size: 15px; font-weight: 500; text-decoration: none; cursor: pointer; border: none; transition: all 0.2s; background: var(--accent); color: var(--bg); }
+.btn:hover { opacity: 0.85; transform: translateY(-1px); }
+.btn-outline { background: transparent; color: var(--fg); border: 1px solid var(--border); }
+.btn-outline:hover { background: var(--surface); }
   </style>
 </head>
 <body>
@@ -506,10 +511,15 @@
     </div>
   </section>
 
-  <!-- SLIDE 11 — Дальше -->
-  <section class="slide light hero">
-    <h2>Дальше</h2>
-    <p class="subtitle" style="font-size:clamp(1.2rem,2.5vw,1.8rem);">Модуль 1 — Каппинг и органолептика</p>
+  <!-- SLIDE 11 — Контрольные вопросы -->
+  <section class="slide light">
+    <h2>Контрольные вопросы</h2>
+    <ul style="margin-top: 20px;">
+      <li>Какие два основных вида кофе существуют?</li>
+      <li>Какая разница между арабикой и робустой?</li>
+      <li>Как степень ферментации влияет на тип чая?</li>
+      <li>Какие стандарты ГОСТ регулируют качество кофе и чая?</li>
+    </ul>
   </section>
 
   <!-- SLIDE 12 — Завершение -->
@@ -517,6 +527,10 @@
     <h1 style="font-size:clamp(2rem,5vw,3.6rem);">Спасибо за внимание!</h1>
     <p class="subtitle">Центр профессионального кофе</p>
     <p class="subtitle" style="margin-top:0.8em;">Модуль 0 · Основы кофе и чая</p>
+    <div class="end-buttons">
+      <button class="btn" onclick="document.querySelector('.slide').scrollIntoView({behavior:'smooth'})">Вернуться к началу</button>
+      <button class="btn btn-outline" onclick="window.location.href='index.html'">На главную</button>
+    </div>
   </section>
 
   <div class="deck-progress" id="deck-progress" aria-hidden></div>

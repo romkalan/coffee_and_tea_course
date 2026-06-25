@@ -181,6 +181,11 @@ th { font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; 
 /* accent underline */
 .accent-line { width: 40px; height: 3px; background: var(--accent); margin-bottom: 20px; }
 .center .accent-line { margin-left: auto; margin-right: auto; }
+.end-buttons { display: flex; gap: 16px; justify-content: center; margin-top: 2em; flex-wrap: wrap; }
+.btn { display: inline-block; padding: 12px 28px; border-radius: 8px; font-family: var(--font-body); font-size: 15px; font-weight: 500; text-decoration: none; cursor: pointer; border: none; transition: all 0.2s; background: var(--accent); color: var(--bg); }
+.btn:hover { opacity: 0.85; transform: translateY(-1px); }
+.btn-outline { background: transparent; color: var(--fg); border: 1px solid var(--border); }
+.btn-outline:hover { background: var(--surface); }
 </style>
 </head>
 <body>
@@ -452,12 +457,29 @@ th { font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; 
   </div>
 </div>
 
-<!-- 16 - Дальше -->
+<!-- 16 - Контрольные вопросы -->
+<div class="slide dark">
+  <div class="label mb-24">Контрольные вопросы</div>
+  <h2>Проверьте себя</h2>
+  <div class="takeaway-grid mt-32">
+    <div class="takeaway"><div class="num">01</div><p>Какие 6 типов чая выделяют по степени ферментации?</p></div>
+    <div class="takeaway"><div class="num">02</div><p>Какая температура воды подходит для зелёного чая?</p></div>
+    <div class="takeaway"><div class="num">03</div><p>Что такое Пин Ча и чем он отличается от Гун Фу Ча?</p></div>
+    <div class="takeaway"><div class="num">04</div><p>Сколько проливов можно сделать из качественного улуна?</p></div>
+  </div>
+</div>
+
+<!-- 17 - Завершение -->
 <div class="slide light center">
   <div class="accent-line"></div>
-  <div class="label">Продолжение</div>
-  <h1>Модуль 6</h1>
-  <p class="subtitle">Итоговая аттестация</p>
+  <div class="label">Завершение</div>
+  <h1>Спасибо за внимание!</h1>
+  <p class="subtitle">Центр профессионального кофе</p>
+  <p class="subtitle">Модуль 5 · Мастерство чая</p>
+  <div class="end-buttons">
+    <button class="btn" onclick="document.querySelector('.slide').scrollIntoView({behavior:'smooth'})">Вернуться к началу</button>
+    <button class="btn btn-outline" onclick="window.location.href='index.html'">На главную</button>
+  </div>
 </div>
 
 <script>

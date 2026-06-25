@@ -451,6 +451,11 @@
     @media (pointer: coarse) {
       .deck-hint { display: none; }
     }
+.end-buttons { display: flex; gap: 16px; justify-content: center; margin-top: 2em; flex-wrap: wrap; }
+.btn { display: inline-block; padding: 12px 28px; border-radius: 8px; font-family: var(--font-body); font-size: 15px; font-weight: 500; text-decoration: none; cursor: pointer; border: none; transition: all 0.2s; background: var(--accent); color: var(--bg); }
+.btn:hover { opacity: 0.85; transform: translateY(-1px); }
+.btn-outline { background: transparent; color: var(--fg); border: 1px solid var(--border); }
+.btn-outline:hover { background: var(--surface); }
   </style>
 </head>
 <body>
@@ -712,18 +717,31 @@
     </div>
   </section>
 
-  <!-- SLIDE 11 — Дальше -->
-  <section class="slide hero light">
-    <p class="hero-caption" style="color: var(--muted); font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; margin-bottom: 1.2em;">ДАЛЬШЕ</p>
-    <h2>Модуль 2</h2>
-    <p class="hero-sub" style="font-size: clamp(1.3rem, 3vw, 2rem); font-weight: 600; color: var(--fg);">Эспрессо и кофемашина</p>
-    <p style="font-size: clamp(0.95rem, 1.5vw, 1.1rem); color: var(--fg-2); max-width: 480px; margin-top: 0.5em;">Устройство кофемашины, стандарты SCA, классические напитки</p>
+  <!-- SLIDE 11 — Контрольные вопросы -->
+  <section class="slide dark">
+    <h2>Контрольные вопросы</h2>
+    <ul style="margin-top: 20px;">
+      <li>Какова оптимальная температура воды для каппинга?</li>
+      <li>Какие параметры оцениваются в каппинг-листе SCA?</li>
+      <li>Что такое «тело» (body) кофе и как его оценивают?</li>
+      <li>Сколько баллов нужно для категории Specialty?</li>
+    </ul>
   </section>
 
+  <!-- SLIDE 12 — Завершение -->
+  <section class="slide hero light">
+    <h1 style="font-size:clamp(2rem,5vw,3.6rem);">Спасибо за внимание!</h1>
+    <p class="subtitle">Центр профессионального кофе</p>
+    <p class="subtitle" style="margin-top:0.8em;">Модуль 1 · Каппинг и органолептика</p>
+    <div class="end-buttons">
+      <button class="btn" onclick="document.querySelector('.slide').scrollIntoView({behavior:'smooth'})">Вернуться к началу</button>
+      <button class="btn btn-outline" onclick="window.location.href='index.html'">На главную</button>
+    </div>
+  </section>
 </div>
 
 <div class="deck-progress" id="deck-progress" aria-hidden></div>
-<div class="deck-counter" id="deck-counter">1 / 11</div>
+<div class="deck-counter" id="deck-counter">1 / 12</div>
 <div class="deck-hint">← → · scroll · swipe</div>
 
 <script>

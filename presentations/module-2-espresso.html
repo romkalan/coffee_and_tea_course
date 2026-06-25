@@ -539,6 +539,11 @@ tbody td:first-child {
   }
   body { scroll-behavior: auto; }
 }
+.end-buttons { display: flex; gap: 16px; justify-content: center; margin-top: 2em; flex-wrap: wrap; }
+.btn { display: inline-block; padding: 12px 28px; border-radius: 8px; font-family: var(--font-body); font-size: 15px; font-weight: 500; text-decoration: none; cursor: pointer; border: none; transition: all 0.2s; background: var(--accent); color: var(--bg); }
+.btn:hover { opacity: 0.85; transform: translateY(-1px); }
+.btn-outline { background: transparent; color: var(--fg); border: 1px solid var(--border); }
+.btn-outline:hover { background: var(--surface); }
 </style>
 </head>
 <body>
@@ -859,14 +864,31 @@ tbody td:first-child {
   </div>
 </section>
 
-<!-- 11 :: Дальше -->
+<!-- 11 :: Контрольные вопросы -->
+<section class="slide slide-dark">
+  <div class="slide-content">
+    <div class="accent-bar"></div>
+    <h2>Контрольные вопросы</h2>
+    <ul style="margin-top:20px;">
+      <li>Каков стандарт SCA для двойного эспрессо?</li>
+      <li>Что такое каналы (channeling) и как их избежать?</li>
+      <li>Какая оптимальная температура воды для эспрессо?</li>
+      <li>Что такое микропенка и зачем она нужна?</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 12 :: Завершение -->
 <section class="slide slide-light slide-center">
   <div class="slide-content">
-    <div class="slide-number reveal">11 / 11</div>
-    <div class="accent-bar reveal"></div>
-    <h1 class="reveal">Модуль 3</h1>
-    <h2 class="reveal" style="font-weight:600;font-size:clamp(1.1rem,2.8vw,2rem);color:var(--fg-2);margin-top:0;">Латте-арт</h2>
-    <p class="tagline reveal">Рисунки на кофе: от сердца до розетты</p>
+    <div class="accent-bar"></div>
+    <h1>Спасибо за внимание!</h1>
+    <p class="subtitle">Центр профессионального кофе</p>
+    <p class="subtitle" style="margin-top:0.8em;">Модуль 2 · Эспрессо и кофемашина</p>
+    <div class="end-buttons">
+      <button class="btn" onclick="document.querySelector('.slide').scrollIntoView({behavior:'smooth'})">Вернуться к началу</button>
+      <button class="btn btn-outline" onclick="window.location.href='index.html'">На главную</button>
+    </div>
   </div>
 </section>
 

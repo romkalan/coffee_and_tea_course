@@ -47,6 +47,11 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--fg); o
 .deck-hint { position: fixed; bottom: 24px; left: 28px; font-family: var(--font-mono); font-size: 12px; color: var(--muted); opacity: 0.5; z-index: 100; }
 @media (max-width: 640px) { .slide { padding: 5vh 6vw; } .grid-2, .grid-3 { grid-template-columns: 1fr; } .compare-table { font-size: 13px; } .deck-counter { bottom: 14px; right: 16px; font-size: 11px; } .deck-hint { display: none; } }
 @media (pointer: coarse) { .deck-hint { display: none; } }
+.end-buttons { display: flex; gap: 16px; justify-content: center; margin-top: 2em; flex-wrap: wrap; }
+.btn { display: inline-block; padding: 12px 28px; border-radius: 8px; font-family: var(--font-body); font-size: 15px; font-weight: 500; text-decoration: none; cursor: pointer; border: none; transition: all 0.2s; background: var(--accent); color: var(--bg); }
+.btn:hover { opacity: 0.85; transform: translateY(-1px); }
+.btn-outline { background: transparent; color: var(--fg); border: 1px solid var(--border); }
+.btn-outline:hover { background: var(--surface); }
 </style>
 </head>
 <body>
@@ -167,18 +172,33 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--fg); o
     </div>
   </section>
 
-  <!-- 10 Завершение -->
-  <section class="slide hero light center" data-screen-label="10 End">
+  <!-- 10 Контрольные вопросы -->
+  <section class="slide dark" data-screen-label="10 Quiz">
+    <h2>Контрольные вопросы</h2>
+    <ul style="margin-top: 20px;">
+      <li>Какие критерии оценки экзаменационного напитка?</li>
+      <li>Что входит в описание авторского напитка?</li>
+      <li>Какие этапы подготовки к итоговой аттестации?</li>
+      <li>Какой вес порции эспрессо рекомендуется для сдачи?</li>
+    </ul>
+  </section>
+
+  <!-- 11 Завершение -->
+  <section class="slide hero light center" data-screen-label="11 End">
     <h2>Поздравляем с завершением курса!</h2>
     <p class="subtitle" style="margin-top: 1em;">Центр профессионального кофе</p>
     <p style="margin-top: 1.5rem; color: var(--fg-2);">Спасибо за обучение!</p>
     <p style="font-size: 0.9rem; color: var(--muted); margin-top: 0.5rem;">Мастерство приготовления кофе и чая</p>
+    <div class="end-buttons">
+      <button class="btn" onclick="document.querySelector('.slide').scrollIntoView({behavior:'smooth'})">Вернуться к началу</button>
+      <button class="btn btn-outline" onclick="window.location.href='index.html'">На главную</button>
+    </div>
   </section>
 
 </div>
 
 <div class="deck-progress" id="deck-progress" aria-hidden></div>
-<div class="deck-counter" id="deck-counter">1 / 10</div>
+<div class="deck-counter" id="deck-counter">1 / 11</div>
 <div class="deck-hint">← → · scroll · swipe</div>
 
 <script>
