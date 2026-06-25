@@ -207,10 +207,10 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--fg); o
   function go(i) {
     var next = Math.max(0, Math.min(slides.length - 1, i));
     setActive(next);
-    scrollToLeft(next * window.innerWidth);
+    scrollToLeft(next * slides[0].offsetWidth);
   }
   function syncFromScroll() {
-    var i = Math.round(activeScrollLeft() / window.innerWidth);
+    var i = Math.round(activeScrollLeft() / slides[0].offsetWidth);
     if (i !== active && i >= 0 && i < slides.length) setActive(i);
   }
   function onKey(e) {
@@ -238,7 +238,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--fg); o
     var saved = parseInt(localStorage.getItem(KEY) || '0', 10);
     if (!isNaN(saved) && saved >= 0 && saved < slides.length) {
       setActive(saved);
-      scrollToLeft(saved * window.innerWidth);
+      scrollToLeft(saved * slides[0].offsetWidth);
     } else {
       setActive(0);
     }
