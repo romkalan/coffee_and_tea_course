@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "presentations/module-5-tea-mastery.html",
+  "entry": "presentations/module-5-tea-mastery.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "pdf",
+    "zip"
+  ],
+  "createdAt": "2026-06-25T10:14:19.748Z",
+  "updatedAt": "2026-06-25T10:14:19.748Z",
+  "metadata": {
+    "inferred": true,
+    "reconciled": true
+  }
+}

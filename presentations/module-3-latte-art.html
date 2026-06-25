@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Модуль 3 — Латте-арт</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Inconsolata:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --bg:#000000;--surface:#141414;--fg:#ffffff;--fg-2:#a0a0a0;
+      --muted:#585858;--border:rgba(65,65,65,0.8);--accent:#faff69;
+      --font-display:"Inter",Arial,Helvetica,ui-sans-serif,system-ui,sans-serif;
+      --font-body:"Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+      --font-mono:"Inconsolata",ui-monospace,"SF Mono","JetBrains Mono",Menlo,Monaco,monospace;
+      --title:clamp(1.75rem,5vw,4rem);--h2:clamp(1.25rem,3.5vw,2.5rem);
+      --h3:clamp(1rem,2.5vw,1.75rem);--body:clamp(.75rem,1.5vw,1.125rem);
+      --small:clamp(.65rem,1vw,.875rem);--pad:clamp(1.25rem,4vw,3.5rem)
+    }
+    html{font-size:16px}
+    body{
+      font-family:var(--font-body);background:var(--bg);color:var(--fg);
+      -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+      overflow:hidden;height:100vh;height:100dvh
+    }
+    .deck{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;height:100vh;height:100dvh;scroll-behavior:smooth;-webkit-overflow-scrolling:touch}
+    .deck::-webkit-scrollbar{display:none}
+    .slide{
+      min-width:100vw;height:100vh;height:100dvh;scroll-snap-align:start;
+      display:flex;flex-direction:column;justify-content:center;
+      padding:var(--pad);position:relative;overflow:hidden;flex-shrink:0
+    }
+    .slide.light{background:#f5f5f5;color:#111}
+    .slide.dark{background:var(--bg);color:var(--fg)}
+    .slide.hero{justify-content:center}
+    .slide.center{align-items:center;text-align:center}
+    .content{max-width:min(90vw,1000px);width:100%}
+    .slide.center .content{max-width:min(90vw,800px)}
+    .module-badge{
+      font-family:var(--font-mono);font-size:var(--small);text-transform:uppercase;
+      letter-spacing:.1em;color:var(--accent);margin-bottom:clamp(6px,.8vw,12px)
+    }
+    .h-hero{font-family:var(--font-display);font-weight:900;font-size:var(--title);line-height:1.05;margin-bottom:clamp(8px,1vw,20px)}
+    .h-xl{font-family:var(--font-display);font-weight:700;font-size:var(--h2);line-height:1.1;margin-bottom:clamp(12px,1.5vw,24px)}
+    .h-md{font-family:var(--font-display);font-weight:600;font-size:var(--h3);line-height:1.2;margin-bottom:clamp(8px,1vw,16px)}
+    .lead{font-size:var(--body);line-height:1.5;color:var(--fg-2);max-width:640px}
+    .slide.light .lead{color:#666}
+    .slide.center .lead{margin-left:auto;margin-right:auto}
+    .sep{width:48px;height:2px;background:var(--accent);margin:clamp(12px,1.5vw,24px) auto}
+    .sep.left{margin:clamp(12px,1.5vw,24px) 0}
+    .scheme{display:grid;grid-template-columns:1fr 1fr;gap:clamp(8px,1vw,16px);margin-top:clamp(12px,1.5vw,24px)}
+    .scheme-item{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:clamp(12px,1.5vw,20px);text-align:center}
+    .slide.light .scheme-item{background:#fff;border-color:#ddd}
+    .scheme-item .label{font-family:var(--font-mono);font-size:10px;color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
+    .slide.light .scheme-item .label{color:var(--accent)}
+    .scheme-item .title{font-family:var(--font-display);font-weight:600;font-size:clamp(14px,1.5vw,20px);margin:8px 0 4px}
+    .scheme-item .desc{font-size:var(--small);color:var(--fg-2);margin:0}
+    .slide.light .scheme-item .desc{color:#888}
+    .nb{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:clamp(10px,1.2vw,16px) clamp(14px,1.5vw,20px);margin-top:clamp(12px,1.5vw,20px)}
+    .slide.light .nb{background:#fff;border-color:#ddd}
+    .nb .nb-label{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:4px}
+    .nb p{font-size:var(--small);color:var(--fg-2);line-height:1.5}
+    .slide.light .nb p{color:#666}
+    .grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(10px,1.5vw,20px);margin-top:clamp(12px,1.5vw,24px)}
+    .texture-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:clamp(14px,1.5vw,20px);text-align:center}
+    .slide.light .texture-card{background:#fff;border-color:#ddd}
+    .texture-card h4{font-family:var(--font-display);font-weight:600;font-size:clamp(14px,1.5vw,20px);margin:0 0 6px}
+    .texture-card p{font-size:var(--small);color:var(--fg-2);line-height:1.4;margin:0}
+    .slide.light .texture-card p{color:#666}
+    .pipeline{display:flex;gap:0;margin-top:clamp(14px,2vw,28px)}
+    .step{flex:1;text-align:center;position:relative;padding:clamp(10px,1.2vw,20px) clamp(8px,1vw,14px)}
+    .step:not(:last-child)::after{content:'→';position:absolute;right:-6px;top:50%;transform:translateY(-50%);color:var(--accent);font-size:clamp(14px,1.5vw,22px)}
+    .step .num{display:inline-flex;align-items:center;justify-content:center;width:clamp(28px,3vw,38px);height:clamp(28px,3vw,38px);border-radius:50%;background:var(--accent);color:#111;font-family:var(--font-display);font-weight:700;font-size:clamp(13px,1.2vw,18px);margin-bottom:clamp(6px,.8vw,12px)}
+    .step h4{font-family:var(--font-display);font-weight:600;font-size:clamp(13px,1.2vw,17px);margin:0 0 4px;color:var(--fg)}
+    .slide.light .step h4{color:#111}
+    .step p{font-size:var(--small);color:var(--fg-2);line-height:1.4;margin:0}
+    .slide.light .step p{color:#666}
+    .ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.5vw,20px);margin-top:clamp(12px,1.5vw,24px)}
+    .ba-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:clamp(14px,1.5vw,20px)}
+    .slide.light .ba-card{background:#fff;border-color:#ddd}
+    .ba-card .label{font-family:var(--font-mono);font-size:10px;color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
+    .ba-card .value{font-weight:600;font-size:clamp(15px,1.5vw,20px);margin:6px 0 4px}
+    .ba-card .desc{font-size:var(--small);color:var(--fg-2);line-height:1.4;margin:0}
+    .slide.light .ba-card .desc{color:#666}
+    .error-list{display:flex;flex-direction:column;gap:clamp(8px,1vw,12px);margin-top:clamp(12px,1.5vw,24px)}
+    .error-item{display:flex;gap:clamp(8px,1vw,14px);align-items:flex-start;padding:clamp(10px,1.2vw,16px);background:var(--surface);border-radius:8px;border-left:3px solid var(--accent)}
+    .slide.light .error-item{background:#fff;border-color:#ddd}
+    .error-item .icon{flex-shrink:0;width:clamp(16px,1.5vw,22px);height:clamp(16px,1.5vw,22px);border-radius:50%;background:var(--accent);color:#111;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;margin-top:2px}
+    .error-item .text{flex:1}
+    .error-item .text h4{font-family:var(--font-display);font-weight:600;font-size:clamp(13px,1.2vw,16px);margin:0 0 2px}
+    .error-item .text p{font-size:var(--small);color:var(--fg-2);line-height:1.4;margin:0}
+    .slide.light .error-item .text p{color:#666}
+    .compare-table{width:100%;border-collapse:collapse;margin-top:clamp(12px,1.5vw,24px);font-size:var(--body)}
+    .compare-table th{text-align:left;font-family:var(--font-display);font-weight:600;font-size:clamp(13px,1.3vw,17px);padding:clamp(6px,.8vw,12px) clamp(8px,1vw,14px);border-bottom:2px solid var(--accent);color:var(--accent)}
+    .compare-table td{padding:clamp(8px,.8vw,14px) clamp(8px,1vw,14px);border-bottom:1px solid var(--border);vertical-align:top;font-size:var(--small)}
+    .slide.light .compare-table td{border-color:#ddd}
+    .compare-table td strong{font-family:var(--font-display)}
+    .term-list{list-style:none;padding:0;margin:clamp(12px,1.5vw,20px) 0}
+    .term-list li{padding:clamp(6px,.7vw,10px) 0;border-bottom:1px solid var(--border);font-size:var(--body);line-height:1.5;color:var(--fg-2)}
+    .slide.light .term-list li{color:#555;border-color:#ddd}
+    .term-list li strong{color:var(--accent);font-family:var(--font-display);font-weight:600}
+    .slide.light .term-list li strong{color:var(--accent)}
+    .summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.5vw,20px);margin-top:clamp(14px,2vw,28px)}
+    .summary-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:clamp(14px,1.5vw,20px);text-align:center}
+    .slide.light .summary-card{background:#fff;border-color:#ddd}
+    .summary-card .card-icon{font-size:clamp(18px,2.5vw,34px);margin-bottom:clamp(6px,.8vw,10px)}
+    .summary-card h4{font-family:var(--font-display);font-weight:600;font-size:clamp(13px,1.2vw,17px);margin:0 0 4px}
+    .summary-card p{font-size:var(--small);color:var(--fg-2);line-height:1.4;margin:0}
+    .slide.light .summary-card p{color:#666}
+    #deck-progress{
+      position:fixed;bottom:0;left:0;height:2px;background:var(--accent);
+      z-index:1000;transition:width .35s ease;width:0%
+    }
+    #deck-counter{
+      position:fixed;bottom:22px;right:clamp(16px,3vw,32px);
+      font-family:var(--font-mono);font-size:clamp(11px,1vw,14px);color:var(--muted);z-index:100;
+      pointer-events:none;user-select:none
+    }
+    .deck-hint{
+      position:fixed;bottom:22px;left:clamp(16px,3vw,32px);
+      font-family:var(--font-mono);font-size:10px;color:var(--muted);
+      opacity:.5;z-index:100;pointer-events:none;user-select:none;
+      letter-spacing:.03em
+    }
+    .slide ul{list-style:none;padding:0;margin:clamp(8px,1vw,16px) 0}
+    .slide ul li{padding:4px 0;padding-left:18px;position:relative;font-size:var(--body);line-height:1.5;color:var(--fg-2)}
+    .slide.light ul li{color:#666}
+    .slide ul li::before{content:'·';position:absolute;left:2px;color:var(--accent);font-weight:700}
+    .stepper{display:flex;gap:clamp(10px,1.5vw,20px);margin-top:clamp(14px,2vw,28px);flex-wrap:wrap}
+    .stepper-item{flex:1;min-width:140px;text-align:center}
+    .stepper-item .circle{width:clamp(32px,3vw,42px);height:clamp(32px,3vw,42px);border-radius:50%;border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-weight:600;font-size:clamp(13px,1.2vw,17px);color:var(--accent);margin:0 auto clamp(6px,.8vw,12px)}
+    .slide.light .stepper-item .circle{color:var(--accent)}
+    .stepper-item h4{font-family:var(--font-display);font-weight:600;font-size:clamp(13px,1.2vw,17px);margin:0 0 4px}
+    .stepper-item p{font-size:var(--small);color:var(--fg-2);line-height:1.4;margin:0}
+    .slide.light .stepper-item p{color:#666}
+    @media(max-width:768px){
+      .slide{padding:clamp(16px,4vw,28px)}
+      .pipeline{flex-direction:column;gap:8px}
+      .step:not(:last-child)::after{content:'↓';right:auto;bottom:-10px;top:auto;left:50%;transform:translateX(-50%)}
+      .grid-3{grid-template-columns:1fr}
+      .scheme{grid-template-columns:1fr}
+      .ba-grid{grid-template-columns:1fr}
+      .summary-grid{grid-template-columns:1fr}
+      .stepper{flex-direction:column}
+      #deck-counter{font-size:11px}
+      .deck-hint{display:none}
+    }
+    @media(max-width:480px){
+      .slide{padding:clamp(12px,3vw,20px)}
+      .compare-table{font-size:var(--small)}
+      .compare-table th,.compare-table td{padding:6px 8px}
+    }
+    @media(prefers-reduced-motion:reduce){
+      *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.2s!important}
+      .deck{scroll-behavior:auto}
+    }
+  </style>
+</head>
+<body>
+  <div class="deck" id="deck">
+
+    <section class="slide hero dark center">
+      <div class="content">
+        <div class="module-badge">Модуль 3</div>
+        <h1 class="h-hero">Латте-арт</h1>
+        <div class="sep"></div>
+        <p class="lead">От микропены до рисунка</p>
+      </div>
+    </section>
+
+    <section class="slide dark">
+      <div class="content">
+        <div class="module-badge">Модуль 3</div>
+        <h2 class="h-xl">Устройство стимера</h2>
+        <div class="sep left"></div>
+        <div class="scheme">
+          <div class="scheme-item">
+            <div class="label">Пароблок</div>
+            <div class="title">Steam wand</div>
+            <p class="desc">Металлическая трубка, подаёт пар из бойлера. Угол наклона влияет на завихрение молока.</p>
+          </div>
+          <div class="scheme-item">
+            <div class="label">Насадка</div>
+            <div class="title">Tip (1–4 отверстия)</div>
+            <p class="desc">Однодырочная — точный контроль. Многодырочная — быстрый нагрев. Глубина погружения определяет качество пены.</p>
+          </div>
+          <div class="scheme-item">
+            <div class="label">Регулятор пара</div>
+            <div class="title">Контроль подачи</div>
+            <p class="desc">Рычаг или вентиль. Открывается полностью — давление 1–1.5 бар. Плавное закрытие после вспенивания.</p>
+          </div>
+          <div class="scheme-item">
+            <div class="label">Дренаж продувки</div>
+            <div class="title">Purge</div>
+            <p class="desc">Продувка пара перед использованием удаляет конденсат. Протирка насадки после — гигиена и долговечность.</p>
+          </div>
+        </div>
+        <div class="nb">
+          <div class="nb-label">Техника</div>
+          <p>Наклон питчера 20–30°, насадка у поверхности молока. Глубина погружения 1–2 мм на этапе аэрации, затем чуть глубже для воронки.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide light">
+      <div class="content">
+        <div class="module-badge">Модуль 3</div>
+        <h2 class="h-xl">Физика вспенивания</h2>
+        <div class="sep left"></div>
+        <div class="ba-grid">
+          <div class="ba-card">
+            <div class="label">Микропузырьки</div>
+            <div class="value">0.1–0.5 мм</div>
+            <p class="desc">Бархатистая текстура, глянцевый блеск. Пена стабильная, держится до 5 минут. Идеальна для латте-арта.</p>
+          </div>
+          <div class="ba-card">
+            <div class="label">Крупные пузыри</div>
+            <div class="value">> 1 мм</div>
+            <p class="desc">Нестабильная пена, быстро оседает. Рисунок расплывается. Результат неправильной аэрации или перегрева.</p>
+          </div>
+        </div>
+        <div class="nb">
+          <div class="nb-label">Состав молока</div>
+          <p>Жирность 3.2–3.5% — оптимальна: жир обволакивает пузырьки, не даёт им сливаться. Белок казеин создаёт структуру пены. Молоко 1.5% даёт крупные пузыри.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide dark">
+      <div class="content">
+        <div class="module-badge">Модуль 3</div>
+        <h2 class="h-xl">Типы молочной текстуры</h2>
+        <div class="sep left"></div>
+        <div class="grid-3">
+          <div class="texture-card">
+            <h4>Капучино</h4>
+            <p>Плотная пена, слой 1–1.5 см.<br>Температура 60–65°C.<br>Рисунок не обязателен — важна текстура.</p>
+          </div>
+          <div class="texture-card">
+            <h4>Латте</h4>
+            <p>Тонкая пена ~0.5 см.<br>Более жидкое молоко.<br>Основа для латте-арта, высокая текучесть.</p>
+          </div>
+          <div class="texture-card">
+            <h4>Флэт-уайт</h4>
+            <p>Микропена без видимого слоя.<br>Гладкая поверхность.<br>Австралийский стандарт, самая тонкая текстура.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide light">
+      <div class="content">
+        <div class="module-badge">Модуль 3</div>
+        <h2 class="h-xl">Этапы вспенивания</h2>
+        <div class="sep left"></div>
+        <div class="pipeline">
+          <div class="step">
+            <div class="num">01</div>
+            <h4>Аэрация</h4>
+            <p>2–3 сек. Насадка у поверхности. Шипящий звук — впуск воздуха.</p>
+          </div>
+          <div class="step">
+            <div class="num">02</div>
+            <h4>Текстурирование</h4>
+            <p>5–10 сек. Насадка погружена. Воронка разбивает пузыри.</p>
+          </div>
+          <div class="step">
+            <div class="num">03</div>
+            <h4>Нагрев</h4>
+            <p>До 60–65°C. Без аэрации — только нагрев. Питчер горячий — пора выключать.</p>
+          </div>
+          <div class="step">
+            <div class="num">04</div>
+            <h4>Очистка</h4>
+            <p>Продувка пара. Протирка насадки. Гигиена перед следующим использованием.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide dark">
+      <div class="content">
+        <div class="module-badge">Модуль 3</div>
+        <h2 class="h-xl">Базовые элементы</h2>
+        <div class="sep left"></div>
+        <div class="grid-3">
+          <div class="texture-card">
+            <h4>● Точка</h4>
+            <p>Базовый элемент. Налив с малой высоты — молоко вытекает, образуя белое пятно на крема.</p>
+          </div>
+          <div class="texture-card">
+            <h4>♡ Сердце</h4>
+            <p>Точка + проход через центр. Молоко растекается симметрично, образует форму сердца.</p>
+          </div>
+          <div class="texture-card">
+            <h4>❀ Тюльпан</h4>
+            <p>3–4 слоя. Последовательные наливы в одну точку. Каждый слой толкает предыдущий.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide light">
+      <div class="content">
+        <div class="module-badge">Модуль 3</div>
+        <h2 class="h-xl">Типичные ошибки</h2>
+        <div class="sep left"></div>
+        <div class="error-list">
+          <div class="error-item">
+            <div class="icon">!</div>
+            <div class="text">
+              <h4>Пена слишком жидкая</h4>
+              <p>Быстро оседает — недостаточная аэрация. Увеличь время насадки у поверхности до 3–4 сек.</p>
+            </div>
+          </div>
+          <div class="error-item">
+            <div class="icon">!</div>
+            <div class="text">
+              <h4>Крупные пузыри</h4>
+              <p>Неправильный угол питчера. Держи питчер под наклоном 20–30° для правильного завихрения.</p>
+            </div>
+          </div>
+          <div class="error-item">
+            <div class="icon">!</div>
+            <div class="text">
+              <h4>Нет контраста</h4>
+              <p>Эспрессо слишком светлый или старая крема. Используй свежий кофе с плотной пенкой.</p>
+            </div>
+          </div>
+          <div class="error-item">
+            <div class="icon">!</div>
+            <div class="text">
+              <h4>Рисунок расплывается</h4>
+              <p>Слишком жидкое молоко — недостаточно текстурирования. Добейся гладкой микропены.</p>
+            </div>
+          </div>
+          <div class="error-item">
+            <div class="icon">!</div>
+            <div class="text">
+              <h4>Симметрия нарушена</h4>
+              <p>Кривой налив. Держи питчер ровно, целься в центр чашки с одинаковой высоты.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide dark">
+      <div class="content">
+        <div class="module-badge">Модуль 3</div>
+        <h2 class="h-xl">Растительное молоко</h2>
+        <div class="sep left"></div>
+        <table class="compare-table">
+          <thead>
+            <tr><th>Тип</th><th>Вспениваемость</th><th>Вкус</th><th>Рекомендация</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Овсяное</strong></td>
+              <td>★★★★★</td>
+              <td>Нейтральный, сладковатый</td>
+              <td style="color:var(--accent)">Лучший выбор</td>
+            </tr>
+            <tr>
+              <td><strong>Соевое</strong></td>
+              <td>★★★★☆</td>
+              <td>Ореховый</td>
+              <td>Хорошо, но требует навыка</td>
+            </tr>
+            <tr>
+              <td><strong>Миндальное</strong></td>
+              <td>★★☆☆☆</td>
+              <td>Ореховый, водянистый</td>
+              <td>Сложно, быстро оседает</td>
+            </tr>
+            <tr>
+              <td><strong>Кокосовое</strong></td>
+              <td>★★★☆☆</td>
+              <td>Кокосовый аромат</td>
+              <td>Специфические напитки</td>
+            </tr>
+            <tr>
+              <td><strong>Рисовое</strong></td>
+              <td>★☆☆☆☆</td>
+              <td>Водянистый</td>
+              <td>Не рекомендуется</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="slide light">
+      <div class="content">
+        <div class="module-badge">Модуль 3 · Глоссарий</div>
+        <h2 class="h-xl">Глоссарий</h2>
+        <div class="sep left"></div>
+        <ul class="term-list">
+          <li><strong>Микропенка</strong> — мелкодисперсная пена с пузырьками &lt; 0.5 мм, гладкая и блестящая</li>
+          <li><strong>Латте-арт</strong> — рисунок на поверхности кофе, создаваемый вливанием вспененного молока</li>
+          <li><strong>Питчер</strong> — металлический кувшин для вспенивания и налива молока</li>
+          <li><strong>Стимер</strong> — пароблок кофемашины для вспенивания молока</li>
+          <li><strong>Аэрация</strong> — этап впуска воздуха в молоко через насадку стимера</li>
+          <li><strong>Текстурирование</strong> — этап создания завихрения для равномерной микропены</li>
+          <li><strong>Крема</strong> — плотная золотистая пенка на поверхности свежесваренного эспрессо</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="slide dark">
+      <div class="content">
+        <div class="module-badge">Модуль 3 · Резюме</div>
+        <h2 class="h-xl">Ключевые выводы</h2>
+        <div class="sep left"></div>
+        <div class="summary-grid">
+          <div class="summary-card">
+            <div class="card-icon">○</div>
+            <h4>Микропена — основа</h4>
+            <p>Гладкая, блестящая, без крупных пузырей. Достигается правильной аэрацией и текстурой.</p>
+          </div>
+          <div class="summary-card">
+            <div class="card-icon">→</div>
+            <h4>4 этапа вспенивания</h4>
+            <p>Аэрация → Текстурирование → Нагрев → Очистка. Каждый этап важен для результата.</p>
+          </div>
+          <div class="summary-card">
+            <div class="card-icon">♪</div>
+            <h4>Слушай молоко</h4>
+            <p>Шипение = аэрация. Тихий шум = текстурирование. Молоко «молчит» = только нагрев.</p>
+          </div>
+          <div class="summary-card">
+            <div class="card-icon">⎔</div>
+            <h4>Практика — ключ</h4>
+            <p>Точка, сердце, тюльпан — осваивай последовательно. Каждый элемент строится на предыдущем.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide hero light center">
+      <div class="content">
+        <div class="module-badge">Модуль 3</div>
+        <h2 class="h-xl">Дальше</h2>
+        <div class="sep"></div>
+        <p class="lead">Модуль 4: Альтернативные методы заваривания</p>
+      </div>
+    </section>
+
+  </div>
+
+  <div id="deck-progress"></div>
+  <div id="deck-counter">1 / 11</div>
+  <div class="deck-hint">← → · scroll · swipe</div>
+
+  <script>
+(function(){var s=document.querySelectorAll('.slide'),c=document.getElementById('deck-counter'),p=document.getElementById('deck-progress'),K='od-deck-pos',a=0;function S(){if(document.body.scrollWidth>document.body.clientWidth+1)return document.body;return document.scrollingElement||document.documentElement}function A(i){a=i;if(c)c.textContent=(i+1)+' / '+s.length;if(p)p.style.width=((i+1)/s.length*100)+'%';try{localStorage.setItem(K,String(i))}catch(_){}}function g(i){var n=Math.max(0,Math.min(s.length-1,i));A(n);S().scrollTo({left:n*window.innerWidth,behavior:'smooth'})}function F(){var i=Math.round(S().scrollLeft/window.innerWidth);if(i!==a&&i>=0&&i<s.length)A(i)}function E(e){var t=e.target;if(t&&(t.tagName==='INPUT'||t.tagName==='TEXTAREA'))return;if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();g(a+1)}else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();g(a-1)}else if(e.key==='Home'){e.preventDefault();g(0)}else if(e.key==='End'){e.preventDefault();g(s.length-1)}}window.addEventListener('keydown',E,true);document.addEventListener('keydown',E,true);document.addEventListener('scroll',F,{passive:true,capture:true});window.addEventListener('scroll',F,{passive:true});document.body.setAttribute('tabindex','-1');document.body.style.outline='none';function f(){try{window.focus();document.body.focus({preventScroll:true})}catch(_){}}document.addEventListener('mousedown',f);window.addEventListener('load',f);f();try{var v=parseInt(localStorage.getItem(K)||'0',10);if(!isNaN(v)&&v>=0&&v<s.length){A(v);S().scrollTo({left:v*window.innerWidth,behavior:'instant'})}else A(0)}catch(_){A(0)}})();
+  </script>
+</body>
+</html>

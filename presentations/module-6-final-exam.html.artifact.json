@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "presentations/module-6-final-exam.html",
+  "entry": "presentations/module-6-final-exam.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "pdf",
+    "zip"
+  ],
+  "createdAt": "2026-06-25T10:13:41.696Z",
+  "updatedAt": "2026-06-25T10:13:41.696Z",
+  "metadata": {
+    "inferred": true,
+    "reconciled": true
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "Мастерство приготовления кофе и чая — навигатор курса",
+  "entry": "coffee-course-navigator.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "pdf",
+    "zip"
+  ],
+  "primary": true,
+  "createdAt": "2026-06-25T10:15:54.889Z",
+  "updatedAt": "2026-06-25T10:15:54.893Z",
+  "designSystemId": "clickhouse",
+  "metadata": {
+    "identifier": "coffee-course-navigator",
+    "artifactType": "text/html",
+    "inferred": false
+  }
+}

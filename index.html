@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Мастерство приготовления кофе и чая — курс</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Inconsolata:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #000000;
+  --surface: #141414;
+  --fg: #ffffff;
+  --fg-2: #a0a0a0;
+  --muted: #585858;
+  --border: rgba(65, 65, 65, 0.8);
+  --accent: #faff69;
+  --accent-on: #151515;
+  --font-display: "Inter", Arial, Helvetica, ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-mono: "Inconsolata", ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Monaco, monospace;
+  --m0: #faff69;
+  --m1: #f4f692;
+  --m2: #166534;
+  --m3: #eab308;
+  --m4: #4f5100;
+  --m5: #14572f;
+  --m6: #585858;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{font-size:16px;-webkit-text-size-adjust:100%}
+body{font-family:var(--font-body);background:var(--bg);color:var(--fg);min-height:100vh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.container{max-width:1200px;margin:0 auto;padding:0 24px;width:100%}
+.header{padding:56px 0 40px;border-bottom:1px solid var(--border)}
+.header-logo{font-weight:700;font-size:0.8125rem;color:var(--accent);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:28px}
+.header h1{font-family:var(--font-display);font-weight:900;font-size:clamp(2.4rem,5vw,4rem);line-height:1.02;letter-spacing:-0.025em;max-width:800px;margin-bottom:14px}
+.header-subtitle{font-size:1.125rem;color:var(--fg-2);line-height:1.55;max-width:600px;margin-bottom:16px}
+.header-meta{font-size:0.8125rem;color:var(--muted);letter-spacing:0.04em;font-family:var(--font-mono)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:44px 0 60px}
+.card{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;transition:transform 0.2s cubic-bezier(0.2,0,0,1),border-color 0.2s ease;display:flex;flex-direction:column}
+.card:hover{border-color:var(--accent);transform:translateY(-3px)}
+.card:active{transform:translateY(-1px)}
+.card-stripe{height:4px;flex-shrink:0}
+.card-body{padding:20px 24px 24px;flex:1;display:flex;flex-direction:column}
+.card-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.card-module{font-weight:600;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--fg-2)}
+.card-hours{font-weight:400;font-size:0.75rem;color:var(--muted);font-family:var(--font-mono)}
+.card-title{font-family:var(--font-display);font-weight:700;font-size:1.3125rem;line-height:1.2;letter-spacing:-0.015em;margin-bottom:8px}
+.card-desc{font-size:0.8125rem;line-height:1.5;color:var(--fg-2);margin-bottom:12px;flex:1}
+.card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.card-tag{font-size:0.6875rem;color:var(--muted);background:rgba(250,255,105,0.06);padding:3px 10px;border-radius:9999px;border:1px solid rgba(250,255,105,0.1);font-family:var(--font-mono);letter-spacing:0.02em}
+.card-footer{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:12px}
+.card-slides{font-size:0.8125rem;color:var(--muted);font-family:var(--font-mono)}
+.card-arrow{font-size:1rem;color:var(--accent);transition:transform 0.2s cubic-bezier(0.2,0,0,1)}
+.card:hover .card-arrow{transform:translateX(6px)}
+.footer{border-top:1px solid var(--border);padding:24px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-top:auto}
+.footer-copy{font-size:0.8125rem;color:var(--muted)}
+.footer-hint{font-size:0.75rem;color:var(--muted);font-family:var(--font-mono);letter-spacing:0.04em}
+@media(max-width:768px){.header h1{font-size:2.25rem}.header{padding:36px 0 28px}.grid{grid-template-columns:repeat(2,1fr);gap:16px;padding:36px 0 44px}.card-body{padding:16px 20px 20px}.card-title{font-size:1.1875rem}}
+@media(max-width:480px){.header h1{font-size:1.75rem}.header-logo{margin-bottom:20px}.header-subtitle{font-size:1rem}.grid{grid-template-columns:1fr;gap:14px;padding:28px 0 36px}.card-title{font-size:1.125rem}.footer{flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+<div class="container">
+  <header class="header">
+    <div class="header-logo">Центр профессионального кофе</div>
+    <h1>Мастерство приготовления кофе и чая</h1>
+    <p class="header-subtitle">От ботанических сортов до авторского напитка — полный курс для бариста</p>
+    <p class="header-meta">7 модулей · 82 слайда · очно и онлайн</p>
+  </header>
+  <div class="grid">
+    <a href="presentations/module-0-coffee-tea-basics.html" class="card"><div class="card-stripe" style="background:var(--m0)"></div><div class="card-body"><div class="card-meta"><span class="card-module">Модуль 0</span><span class="card-hours">2 ч</span></div><h2 class="card-title">Основы кофе и чая</h2><p class="card-desc">Арабика vs Робуста, методы обработки, степени обжарки, классификация чая, стандарты РФ</p><div class="card-tags"><span class="card-tag">ботаника</span><span class="card-tag">SCA</span><span class="card-tag">обжарка</span><span class="card-tag">терруар</span></div><div class="card-footer"><span class="card-slides">12 слайдов</span><span class="card-arrow">→</span></div></div></a>
+    <a href="presentations/module-1-cupping.html" class="card"><div class="card-stripe" style="background:var(--m1)"></div><div class="card-body"><div class="card-meta"><span class="card-module">Модуль 1</span><span class="card-hours">2 ч</span></div><h2 class="card-title">Каппинг и органолептика</h2><p class="card-desc">Сенсорное восприятие, колесо вкусов SCA, дегустационный лист, протокол каппинга</p><div class="card-tags"><span class="card-tag">сенсорика</span><span class="card-tag">SCA</span><span class="card-tag">дегустация</span><span class="card-tag">спешелти</span></div><div class="card-footer"><span class="card-slides">11 слайдов</span><span class="card-arrow">→</span></div></div></a>
+    <a href="presentations/module-2-espresso.html" class="card"><div class="card-stripe" style="background:var(--m2)"></div><div class="card-body"><div class="card-meta"><span class="card-module">Модуль 2</span><span class="card-hours">3 ч</span></div><h2 class="card-title">Эспрессо и кофемашина</h2><p class="card-desc">Техника безопасности, устройство кофемашины и кофемолки, стандарты SCA, классические напитки</p><div class="card-tags"><span class="card-tag">эспрессо</span><span class="card-tag">SCA</span><span class="card-tag">кофемашина</span><span class="card-tag">безопасность</span></div><div class="card-footer"><span class="card-slides">11 слайдов</span><span class="card-arrow">→</span></div></div></a>
+    <a href="presentations/module-3-latte-art.html" class="card"><div class="card-stripe" style="background:var(--m3)"></div><div class="card-body"><div class="card-meta"><span class="card-module">Модуль 3</span><span class="card-hours">2 ч</span></div><h2 class="card-title">Латте-арт</h2><p class="card-desc">Устройство стимера, физика вспенивания, текстуры молока, базовые элементы, растительное молоко</p><div class="card-tags"><span class="card-tag">латтеарт</span><span class="card-tag">молоко</span><span class="card-tag">стимер</span><span class="card-tag">питчер</span></div><div class="card-footer"><span class="card-slides">11 слайдов</span><span class="card-arrow">→</span></div></div></a>
+    <a href="presentations/module-4-alternative-brewing.html" class="card"><div class="card-stripe" style="background:var(--m4)"></div><div class="card-body"><div class="card-meta"><span class="card-module">Модуль 4</span><span class="card-hours">2 ч</span></div><h2 class="card-title">Альтернативные методы заваривания</h2><p class="card-desc">Вкусовой баланс, иммерсия vs пуровер, V60, френч-пресс, Chemex, Kalita, Aeropress</p><div class="card-tags"><span class="card-tag">пуровер</span><span class="card-tag">V60</span><span class="card-tag">френчпресс</span><span class="card-tag">иммерсия</span></div><div class="card-footer"><span class="card-slides">11 слайдов</span><span class="card-arrow">→</span></div></div></a>
+    <a href="presentations/module-5-tea-mastery.html" class="card"><div class="card-stripe" style="background:var(--m5)"></div><div class="card-body"><div class="card-meta"><span class="card-module">Модуль 5</span><span class="card-hours">3 ч</span></div><h2 class="card-title">Мастерство чая</h2><p class="card-desc">Классификация, температура, методы заваривания, чайная церемония Пин Ча, утварь</p><div class="card-tags"><span class="card-tag">чай</span><span class="card-tag">проливы</span><span class="card-tag">ПинЧа</span><span class="card-tag">пуэр</span></div><div class="card-footer"><span class="card-slides">16 слайдов</span><span class="card-arrow">→</span></div></div></a>
+    <a href="presentations/module-6-final-exam.html" class="card"><div class="card-stripe" style="background:var(--m6)"></div><div class="card-body"><div class="card-meta"><span class="card-module">Модуль 6</span><span class="card-hours">1 ч</span></div><h2 class="card-title">Итоговая аттестация</h2><p class="card-desc">Разработка и презентация авторского напитка, критерии оценки</p><div class="card-tags"><span class="card-tag">аттестация</span><span class="card-tag">авторскийнапиток</span><span class="card-tag">экзамен</span></div><div class="card-footer"><span class="card-slides">10 слайдов</span><span class="card-arrow">→</span></div></div></a>
+  </div>
+</div>
+<footer class="footer"><div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;width:100%"><span class="footer-copy">© 2026 Центр профессионального кофе</span><span class="footer-hint">← → для навигации</span></div></footer>
+</body>
+</html>

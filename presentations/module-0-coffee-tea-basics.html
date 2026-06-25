@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Модуль 0 — Основы кофе и чая</title>
+  <meta name="description" content="Модуль 0: основы кофе и чая — ботаника, обработка, обжарка, классификация и стандарты РФ" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Inconsolata:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #000000;
+      --surface:   #141414;
+      --fg:        #ffffff;
+      --fg-2:      #a0a0a0;
+      --muted:     #585858;
+      --border:    rgba(65, 65, 65, 0.8);
+      --accent:    #faff69;
+      --font-display: "Inter", Arial, Helvetica, ui-sans-serif, system-ui, sans-serif;
+      --font-body:    "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      --font-mono:    "Inconsolata", ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Monaco, monospace;
+    }
+
+    html {
+      font-size: 18px;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--fg);
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+
+    body {
+      display: flex;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    body::-webkit-scrollbar { display: none; }
+
+    .slide {
+      scroll-snap-align: start;
+      flex: 0 0 100vw;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6vh 8vw;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    .slide.light {
+      background: var(--surface);
+      color: var(--fg);
+    }
+
+    .slide.dark {
+      background: var(--bg);
+      color: var(--fg);
+    }
+
+    .slide.hero {
+      text-align: center;
+      align-items: center;
+    }
+
+    .slide.hero h1 {
+      font-size: clamp(2.6rem, 6vw, 4.6rem);
+    }
+
+    .slide h1, .slide h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .slide h1 {
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      margin-bottom: 0.3em;
+    }
+
+    .slide h2 {
+      font-size: clamp(1.5rem, 3.5vw, 2.6rem);
+      margin-bottom: 0.5em;
+      font-weight: 600;
+    }
+
+    .slide h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.05rem, 2vw, 1.35rem);
+      font-weight: 600;
+      margin-bottom: 0.4em;
+    }
+
+    .slide p, .slide li {
+      font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+      line-height: 1.55;
+      color: var(--fg-2);
+    }
+
+    .slide ul {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0;
+    }
+
+    .slide ul li {
+      padding: 6px 0 6px 1.8em;
+      position: relative;
+    }
+
+    .slide ul li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-family: var(--font-mono);
+    }
+
+    .slide .subtitle {
+      font-size: clamp(1rem, 2vw, 1.35rem);
+      color: var(--fg-2);
+      margin-top: 0.4em;
+    }
+
+    .slide .lead {
+      font-size: clamp(1rem, 1.8vw, 1.2rem);
+      color: var(--fg-2);
+      max-width: 600px;
+    }
+
+    .slide .accent-line {
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-weight: 600;
+    }
+
+    /* Tables */
+    .tbl { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 14px; }
+    .tbl th {
+      text-align: left;
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-bottom: 2px solid var(--accent);
+      color: var(--accent);
+    }
+    .tbl td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; color: var(--fg-2); }
+    .tbl td:first-child { color: var(--fg); font-weight: 500; }
+
+    /* Grids */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 16px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 16px; }
+
+    .g-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 20px;
+    }
+    .slide.light .g-item {
+      background: rgba(255,255,255,0.03);
+    }
+    .g-item h3 { margin-bottom: 6px; }
+    .g-item p { font-size: 13px; margin-bottom: 4px; color: var(--fg-2); }
+    .g-item .label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* Steps */
+    .steps { display: flex; gap: 16px; margin-top: 16px; align-items: stretch; }
+    .step {
+      flex: 1;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 20px;
+      position: relative;
+    }
+    .slide.light .step { background: rgba(255,255,255,0.03); }
+    .step .step-num {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 600;
+    }
+    .step .step-arrow {
+      position: absolute;
+      right: -12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 18px;
+      color: var(--muted);
+      font-family: var(--font-mono);
+    }
+    .step:last-child .step-arrow { display: none; }
+    .step h3 { margin: 8px 0 6px; font-size: clamp(0.9rem, 1.4vw, 1.1rem); }
+    .step p { font-size: 13px; color: var(--fg-2); }
+
+    /* Scale bar */
+    .scale-wrap { margin-top: 16px; }
+    .scale-bar {
+      height: 6px;
+      background: var(--muted);
+      position: relative;
+      margin: 20px 0 8px;
+    }
+    .scale-bar .fill {
+      height: 100%;
+      width: 100%;
+      background: var(--accent);
+      opacity: 0.3;
+    }
+    .scale-markers {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      font-family: var(--font-mono);
+      color: var(--muted);
+      position: relative;
+      top: -2px;
+    }
+    .scale-markers span { text-align: center; flex: 1; }
+    .scale-temps {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      font-family: var(--font-mono);
+      color: var(--accent);
+      font-weight: 600;
+      margin-top: 4px;
+    }
+    .scale-temps span { text-align: center; flex: 1; }
+
+    /* Term list */
+    .term-list { list-style: none; padding: 0; margin: 16px 0; }
+    .term-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 15px;
+      color: var(--fg-2);
+    }
+    .term-list li:last-child { border-bottom: none; }
+    .term-list li strong { color: var(--accent); font-weight: 600; }
+
+    /* Takeaway cards */
+    .take-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px; }
+    .t-card {
+      border: 1px solid var(--border);
+      padding: 16px 18px;
+      background: var(--surface);
+    }
+    .slide.light .t-card { background: rgba(255,255,255,0.03); }
+    .t-card .num {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .t-card p { margin-top: 4px; font-size: 13px; color: var(--fg-2); }
+
+    /* Note block */
+    .note {
+      margin-top: 16px;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      font-size: 14px;
+      color: var(--fg-2);
+    }
+    .note strong { color: var(--accent); }
+
+    /* Chrome */
+    .deck-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: var(--accent);
+      z-index: 100;
+      transition: width 0.35s ease;
+    }
+    .deck-counter {
+      position: fixed;
+      bottom: 24px;
+      right: 28px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--muted);
+      z-index: 100;
+      letter-spacing: 0.06em;
+    }
+    .deck-hint {
+      position: fixed;
+      bottom: 24px;
+      left: 28px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--muted);
+      opacity: 0.4;
+      z-index: 100;
+    }
+
+    @media (max-width: 640px) {
+      .slide { padding: 5vh 6vw; }
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .steps { flex-direction: column; }
+      .step .step-arrow { display: none; }
+      .take-grid { grid-template-columns: 1fr; }
+      .tbl { font-size: 12px; }
+      .tbl th, .tbl td { padding: 6px 8px; }
+      .deck-counter { bottom: 14px; right: 16px; font-size: 11px; }
+      .deck-hint { display: none; }
+    }
+    @media (pointer: coarse) {
+      .deck-hint { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SLIDE 01 — Cover -->
+  <section class="slide dark hero">
+    <h1>Модуль 0</h1>
+    <h2 style="font-size: clamp(1.4rem, 3.5vw, 2.4rem); margin-top: -0.2em;">Основы кофе и чая</h2>
+    <p class="subtitle" style="margin-top: 0.8em;">От ботаники до стандартов качества — фундамент курса</p>
+  </section>
+
+  <!-- SLIDE 02 — Цели модуля -->
+  <section class="slide dark">
+    <h2>Цели модуля</h2>
+    <ul style="max-width: 640px;">
+      <li>Понимать разницу между арабикой и робустой</li>
+      <li>Разбираться в методах обработки кофейных ягод</li>
+      <li>Определять степень обжарки зерна</li>
+      <li>Классифицировать чай по степени ферментации</li>
+      <li>Ориентироваться в стандартах РФ</li>
+    </ul>
+  </section>
+
+  <!-- SLIDE 03 — Арабика vs Робуста -->
+  <section class="slide light">
+    <h2>Арабика vs Робуста</h2>
+    <table class="tbl">
+      <thead>
+        <tr><th>Параметр</th><th>Арабика</th><th>Робуста</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Происхождение</td><td>Coffea arabica, Эфиопия</td><td>Coffea canephora, Конго</td></tr>
+        <tr><td>Высота</td><td>600–2200 м</td><td>0–800 м</td></tr>
+        <tr><td>Вкус</td><td>Мягкий, фруктовый, кислотный</td><td>Грубый, горький, землистый</td></tr>
+        <tr><td>Кофеин</td><td>0.8–1.4%</td><td>1.7–4.0%</td></tr>
+        <tr><td>Регионы</td><td>Лат. Америка, Вост. Африка, Йемен</td><td>Вьетнам, Индонезия, Уганда</td></tr>
+        <tr><td>Цена</td><td>Высокая (спешелти)</td><td>Низкая, коммерческий сорт</td></tr>
+      </tbody>
+    </table>
+    <div class="note">
+      Латинская Америка, Африка, Азия — три континента, три вкусовых профиля. <strong>Терруар</strong> определяет до 60% вкуса зелёного зерна.
+    </div>
+  </section>
+
+  <!-- SLIDE 04 — Методы обработки -->
+  <section class="slide dark">
+    <h2>Методы обработки</h2>
+    <div class="steps">
+      <div class="step">
+        <span class="step-num">01 · Мытая (Washed)</span>
+        <span class="step-arrow">→</span>
+        <h3>Чистота и кислотность</h3>
+        <p>Ягоду депульпируют, ферментируют в воде, промывают и сушат.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">02 · Натуральная (Natural)</span>
+        <span class="step-arrow">→</span>
+        <h3>Ягода целиком</h3>
+        <p>Ягоду сушат с мякотью на солнце. Ягодный, бродильный вкус, плотное тело.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">03 · Хани (Honey)</span>
+        <h3>Сладкий компромисс</h3>
+        <p>Удаляют кожицу, оставляя часть мякоти. Сладкий, сбалансированный вкус.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 05 — Степени обжарки -->
+  <section class="slide light">
+    <h2>Степени обжарки</h2>
+    <div class="scale-wrap">
+      <div class="scale-bar"><div class="fill"></div></div>
+      <div class="scale-temps">
+        <span>Зелёное</span>
+        <span>1st crack ~196°C</span>
+        <span>2nd crack ~224°C</span>
+        <span>Полная</span>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="g-item">
+        <span class="label">Светлая (Городская)</span>
+        <h3>Кислотность высокая</h3>
+        <p>Тело лёгкое, фруктовые ноты. 1st crack только завершён.</p>
+      </div>
+      <div class="g-item">
+        <span class="label">Средняя (Полная городская)</span>
+        <h3>Баланс кислоты и горечи</h3>
+        <p>Карамельная сладость. Самый популярный диапазон для фильтра и эспрессо.</p>
+      </div>
+      <div class="g-item">
+        <span class="label">Тёмная (Венская / Итальянская)</span>
+        <h3>Минимум кислоты</h3>
+        <p>Дымный / шоколадный вкус. Масла выходят на поверхность.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 06 — Классификация чая -->
+  <section class="slide dark">
+    <h2>Классификация чая</h2>
+    <table class="tbl">
+      <thead>
+        <tr><th>Тип</th><th>Ферментация</th><th>Вкусовой профиль</th><th>Примеры</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Белый</td><td>0–5%</td><td>Нежный, цветочный</td><td>Бай Му Дань, Сильвер Нидл</td></tr>
+        <tr><td>Зелёный</td><td>5–15%</td><td>Свежий, овощной, ореховый</td><td>Лунцзин, Би Ло Чунь, Сенча</td></tr>
+        <tr><td>Улун</td><td>20–70%</td><td>Цветочно-фруктовый, сливочный</td><td>Те Гуань Инь, Да Хун Пао</td></tr>
+        <tr><td>Чёрный</td><td>85–100%</td><td>Насыщенный, солодовый</td><td>Дянь Хун, Ассам, Цейлон</td></tr>
+        <tr><td>Пуэр</td><td>Пост-ферментация</td><td>Землистый, выдержанный</td><td>Шен Пуэр, Шу Пуэр</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- SLIDE 07 — Стандарты РФ -->
+  <section class="slide dark">
+    <h2>Стандарты РФ</h2>
+    <div class="grid-2">
+      <div class="g-item">
+        <span class="label">ГОСТ 32774-2014</span>
+        <h3>Кофе</h3>
+        <p>Влажность max 4–5%, содержание кофеина, маркировка. Без ГМО, страна происхождения.</p>
+      </div>
+      <div class="g-item">
+        <span class="label">ГОСТ 32593-2013</span>
+        <h3>Чай</h3>
+        <p>Влажность до 8%, нормирование мелочи, сорта, маркировка.</p>
+      </div>
+    </div>
+    <div class="note">
+      Оба ГОСТа гармонизированы с международными стандартами ISO и Кодекс Алиментариус.
+    </div>
+  </section>
+
+  <!-- SLIDE 08 — Глоссарий -->
+  <section class="slide light">
+    <h2>Глоссарий</h2>
+    <ul class="term-list">
+      <li><strong>Терруар</strong> — совокупность почвенно-климатических условий региона</li>
+      <li><strong>Крек (crack)</strong> — звук лопания зерна при обжарке. ~196°C / ~224°C</li>
+      <li><strong>Ферментация</strong> — биохимическое окисление чайного листа</li>
+      <li><strong>Спешелти</strong> — кофе 80+ баллов SCA</li>
+      <li><strong>Пуровер</strong> — ручное заваривание через фильтр</li>
+    </ul>
+  </section>
+
+  <!-- SLIDE 09 — Резюме 1 -->
+  <section class="slide dark">
+    <h2 style="text-align:center;">Резюме</h2>
+    <div class="take-grid" style="max-width:640px;margin:20px auto 0;">
+      <div class="t-card"><span class="num">01</span><p>Мир кофе делится на арабику и робусту</p></div>
+      <div class="t-card"><span class="num">02</span><p>Обработка и обжарка определяют до 80% вкуса</p></div>
+      <div class="t-card"><span class="num">03</span><p>Чай — это градус ферментации</p></div>
+    </div>
+  </section>
+
+  <!-- SLIDE 10 — Резюме 2 -->
+  <section class="slide light">
+    <h2 style="text-align:center;">Резюме</h2>
+    <div class="take-grid" style="max-width:640px;margin:20px auto 0;">
+      <div class="t-card"><span class="num">04</span><p>Терруар — вкус региона</p></div>
+      <div class="t-card"><span class="num">05</span><p>ГОСТ 32774-2014 и ГОСТ 32593-2013</p></div>
+      <div class="t-card"><span class="num">06</span><p>Освоив базу, вы готовы к каппингу</p></div>
+    </div>
+  </section>
+
+  <!-- SLIDE 11 — Дальше -->
+  <section class="slide light hero">
+    <h2>Дальше</h2>
+    <p class="subtitle" style="font-size:clamp(1.2rem,2.5vw,1.8rem);">Модуль 1 — Каппинг и органолептика</p>
+  </section>
+
+  <!-- SLIDE 12 — Завершение -->
+  <section class="slide dark hero">
+    <h1 style="font-size:clamp(2rem,5vw,3.6rem);">Спасибо за внимание!</h1>
+    <p class="subtitle">Центр профессионального кофе</p>
+    <p class="subtitle" style="margin-top:0.8em;">Модуль 0 · Основы кофе и чая</p>
+  </section>
+
+  <div class="deck-progress" id="deck-progress" aria-hidden></div>
+  <div class="deck-counter" id="deck-counter">1 / 12</div>
+  <div class="deck-hint">← → · scroll · swipe</div>
+
+  <script>
+  (function(){var s=document.querySelectorAll('.slide'),c=document.getElementById('deck-counter'),p=document.getElementById('deck-progress'),K='od-deck-pos',a=0;function S(){if(document.body.scrollWidth>document.body.clientWidth+1)return document.body;return document.scrollingElement||document.documentElement}function A(i){a=i;if(c)c.textContent=(i+1)+' / '+s.length;if(p)p.style.width=((i+1)/s.length*100)+'%';try{localStorage.setItem(K,String(i))}catch(_){}}function g(i){var n=Math.max(0,Math.min(s.length-1,i));A(n);S().scrollTo({left:n*window.innerWidth,behavior:'smooth'})}function F(){var i=Math.round(S().scrollLeft/window.innerWidth);if(i!==a&&i>=0&&i<s.length)A(i)}function E(e){var t=e.target;if(t&&(t.tagName==='INPUT'||t.tagName==='TEXTAREA'))return;if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();g(a+1)}else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();g(a-1)}else if(e.key==='Home'){e.preventDefault();g(0)}else if(e.key==='End'){e.preventDefault();g(s.length-1)}}window.addEventListener('keydown',E,true);document.addEventListener('keydown',E,true);document.addEventListener('scroll',F,{passive:true,capture:true});window.addEventListener('scroll',F,{passive:true});document.body.setAttribute('tabindex','-1');document.body.style.outline='none';function f(){try{window.focus();document.body.focus({preventScroll:true})}catch(_){}}document.addEventListener('mousedown',f);window.addEventListener('load',f);f();try{var v=parseInt(localStorage.getItem(K)||'0',10);if(!isNaN(v)&&v>=0&&v<s.length){A(v);S().scrollTo({left:v*window.innerWidth,behavior:'instant'})}else A(0)}catch(_){A(0)}})();
+  </script>
+</body>
+</html>

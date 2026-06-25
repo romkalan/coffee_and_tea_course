@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "presentations/module-0-coffee-tea-basics.html",
+  "entry": "presentations/module-0-coffee-tea-basics.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "pdf",
+    "zip"
+  ],
+  "createdAt": "2026-06-25T10:14:18.910Z",
+  "updatedAt": "2026-06-25T10:14:18.910Z",
+  "metadata": {
+    "inferred": true,
+    "reconciled": true
+  }
+}
