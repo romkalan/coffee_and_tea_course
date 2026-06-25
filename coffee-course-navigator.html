@@ -1,0 +1,67 @@
+
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Мастерство приготовления кофе и чая</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#1a120e;--surface:#2a1f18;--fg:#f5f0eb;--fg-2:#c68e7a;--muted:#a0856e;--border:rgba(212,165,116,0.2);--accent:#d4a574;--font-display:'Cormorant',Georgia,serif;--font-body:'DM Sans',system-ui,sans-serif;--m0:#d4a574;--m1:#c4876a;--m2:#8b6b54;--m3:#b8947a;--m4:#7a9b6a;--m5:#6a8b7a;--m6:#a47a54}
+html{font-size:16px}
+body{font-family:var(--font-body);background:var(--bg);color:var(--fg);min-height:100vh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.container{max-width:1200px;margin:0 auto;padding:0 24px;width:100%}
+.header{padding:48px 0 40px;border-bottom:1px solid var(--border)}
+.header-logo{font-family:var(--font-display);font-weight:700;font-size:1.25rem;color:var(--accent);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:24px}
+.header h1{font-family:var(--font-display);font-weight:700;font-size:3rem;line-height:1.15;max-width:720px;margin-bottom:12px}
+.header-subtitle{font-size:1.125rem;color:var(--fg-2);line-height:1.6;max-width:600px;margin-bottom:16px}
+.header-meta{font-size:0.875rem;color:var(--muted);letter-spacing:0.04em}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:40px 0 56px}
+.card{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:transform 0.3s cubic-bezier(0.22,1,0.36,1),border-color 0.3s ease,box-shadow 0.3s ease;cursor:pointer;display:flex;flex-direction:column}
+.card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.4)}
+.card:active{transform:translateY(-1px)}
+.card-stripe{height:4px;flex-shrink:0}
+.card-body{padding:20px 24px 24px;flex:1;display:flex;flex-direction:column}
+.card-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.card-module{font-weight:500;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted)}
+.card-hours{font-weight:400;font-size:0.75rem;color:var(--muted)}
+.card-title{font-family:var(--font-display);font-weight:600;font-size:1.375rem;line-height:1.25;margin-bottom:8px}
+.card-desc{font-size:0.875rem;line-height:1.55;color:var(--fg-2);margin-bottom:12px;flex:1}
+.card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.card-tag{font-size:0.6875rem;color:var(--muted);background:rgba(212,165,116,0.08);padding:3px 10px;border-radius:20px;border:1px solid rgba(212,165,116,0.12)}
+.card-footer{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:12px}
+.card-slides{font-size:0.8125rem;color:var(--muted)}
+.card-arrow{font-size:1rem;color:var(--accent);transition:transform 0.3s cubic-bezier(0.22,1,0.36,1)}
+.card:hover .card-arrow{transform:translateX(6px)}
+.footer{border-top:1px solid var(--border);padding:24px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-top:auto}
+.footer-copy{font-size:0.8125rem;color:var(--muted)}
+.footer-hint{font-size:0.8125rem;color:var(--muted);letter-spacing:0.02em}
+@media(max-width:768px){.header h1{font-size:2.25rem}.header{padding:32px 0 28px}.grid{grid-template-columns:repeat(2,1fr);gap:16px;padding:32px 0 40px}.card-body{padding:16px 20px 20px}.card-title{font-size:1.25rem}}
+@media(max-width:480px){.header h1{font-size:1.75rem}.header-logo{margin-bottom:16px}.header-subtitle{font-size:1rem}.grid{grid-template-columns:1fr;gap:14px;padding:24px 0 32px}.card-title{font-size:1.1875rem}.footer{flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+<div class="container">
+  <header class="header">
+    <div class="header-logo">ЦПК</div>
+    <h1>Мастерство приготовления кофе и чая</h1>
+    <p class="header-subtitle">От ботанических сортов до авторского напитка — полный курс для бариста</p>
+    <p class="header-meta">7 модулей · 82 слайда · очно и онлайн</p>
+  </header>
+  <div class="grid">
+    <a href="presentations/module-0-coffee-tea-basics.html" class="card"><div class="card-stripe" style="background:var(--m0)"></div><div class="card-body"><div class="card-meta"><span class="card-module">Модуль 0</span><span class="card-hours">2 ч</span></div><h2 class="card-title">Основы кофе и чая</h2><p class="card-desc">Арабика vs Робуста, методы обработки, степени обжарки, классификация чая, стандарты РФ</p><div class="card-tags"><span class="card-tag">#ботаника</span><span class="card-tag">#SCA</span><span class="card-tag">#обжарка</span><span class="card-tag">#терруар</span></div><div class="card-footer"><span class="card-slides">12 слайдов</span><span class="card-arrow">→</span></div></div></a>
+    <a href="presentations/module-1-cupping.html" class="card"><div class="card-stripe" style="background:var(--m1)"></div><div class="card-body"><div class="card-meta"><span class="card-module">Модуль 1</span><span class="card-hours">2 ч</span></div><h2 class="card-title">Каппинг и органолептика</h2><p class="card-desc">Сенсорное восприятие, колесо вкусов SCA, дегустационный лист, протокол каппинга</p><div class="card-tags"><span class="card-tag">#сенсорика</span><span class="card-tag">#SCA</span><span class="card-tag">#дегустация</span><span class="card-tag">#спешелти</span></div><div class="card-footer"><span class="card-slides">11 слайдов</span><span class="card-arrow">→</span></div></div></a>
+    <a href="presentations/module-2-espresso.html" class="card"><div class="card-stripe" style="background:var(--m2)"></div><div class="card-body"><div class="card-meta"><span class="card-module">Модуль 2</span><span class="card-hours">3 ч</span></div><h2 class="card-title">Эспрессо и кофемашина</h2><p class="card-desc">Техника безопасности, устройство кофемашины и кофемолки, стандарты SCA, классические напитки</p><div class="card-tags"><span class="card-tag">#эспрессо</span><span class="card-tag">#SCA</span><span class="card-tag">#кофемашина</span><span class="card-tag">#безопасность</span></div><div class="card-footer"><span class="card-slides">11 слайдов</span><span class="card-arrow">→</span></div></div></a>
+    <a href="presentations/module-3-latte-art.html" class="card"><div class="card-stripe" style="background:var(--m3)"></div><div class="card-body"><div class="card-meta"><span class="card-module">Модуль 3</span><span class="card-hours">2 ч</span></div><h2 class="card-title">Латте-арт</h2><p class="card-desc">Устройство стимера, физика вспенивания, текстуры молока, базовые элементы, растительное молоко</p><div class="card-tags"><span class="card-tag">#латтеарт</span><span class="card-tag">#молоко</span><span class="card-tag">#стимер</span><span class="card-tag">#питчер</span></div><div class="card-footer"><span class="card-slides">11 слайдов</span><span class="card-arrow">→</span></div></div></a>
+    <a href="presentations/module-4-alternative-brewing.html" class="card"><div class="card-stripe" style="background:var(--m4)"></div><div class="card-body"><div class="card-meta"><span class="card-module">Модуль 4</span><span class="card-hours">2 ч</span></div><h2 class="card-title">Альтернативные методы заваривания</h2><p class="card-desc">Вкусовой баланс, иммерсия vs пуровер, V60, френч-пресс, Chemex, Kalita, Aeropress</p><div class="card-tags"><span class="card-tag">#пуровер</span><span class="card-tag">#V60</span><span class="card-tag">#френчпресс</span><span class="card-tag">#иммерсия</span></div><div class="card-footer"><span class="card-slides">11 слайдов</span><span class="card-arrow">→</span></div></div></a>
+    <a href="presentations/module-5-tea-mastery.html" class="card"><div class="card-stripe" style="background:var(--m5)"></div><div class="card-body"><div class="card-meta"><span class="card-module">Модуль 5</span><span class="card-hours">3 ч</span></div><h2 class="card-title">Мастерство чая</h2><p class="card-desc">Классификация, температура, методы заваривания, чайная церемония Пин Ча, утварь</p><div class="card-tags"><span class="card-tag">#чай</span><span class="card-tag">#проливы</span><span class="card-tag">#ПинЧа</span><span class="card-tag">#пуэр</span></div><div class="card-footer"><span class="card-slides">16 слайдов</span><span class="card-arrow">→</span></div></div></a>
+    <a href="presentations/module-6-final-exam.html" class="card"><div class="card-stripe" style="background:var(--m6)"></div><div class="card-body"><div class="card-meta"><span class="card-module">Модуль 6</span><span class="card-hours">1 ч</span></div><h2 class="card-title">Итоговая аттестация</h2><p class="card-desc">Разработка и презентация авторского напитка, критерии оценки</p><div class="card-tags"><span class="card-tag">#аттестация</span><span class="card-tag">#авторскийнапиток</span><span class="card-tag">#экзамен</span></div><div class="card-footer"><span class="card-slides">10 слайдов</span><span class="card-arrow">→</span></div></div></a>
+  </div>
+</div>
+<footer class="footer"><div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;width:100%"><span class="footer-copy">© 2026 Центр профессионального кофе</span><span class="footer-hint">← → для навигации между презентациями</span></div></footer>
+</body>
+</html>

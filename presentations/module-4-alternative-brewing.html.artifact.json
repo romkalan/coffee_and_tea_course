@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "presentations/module-4-alternative-brewing.html",
+  "entry": "presentations/module-4-alternative-brewing.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "pdf",
+    "zip"
+  ],
+  "createdAt": "2026-06-25T10:13:23.907Z",
+  "updatedAt": "2026-06-25T10:13:23.907Z",
+  "metadata": {
+    "inferred": true,
+    "reconciled": true
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "presentations/module-1-cupping.html",
+  "entry": "presentations/module-1-cupping.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "pdf",
+    "zip"
+  ],
+  "createdAt": "2026-06-25T10:14:33.635Z",
+  "updatedAt": "2026-06-25T10:14:33.635Z",
+  "metadata": {
+    "inferred": true,
+    "reconciled": true
+  }
+}
