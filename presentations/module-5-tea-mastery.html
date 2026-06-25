@@ -38,6 +38,7 @@ body {
 }
 body::-webkit-scrollbar { display: none; }
 .slide {
+  width: var(--slide-w);
   min-width: var(--slide-w);
   height: 100vh;
   scroll-snap-align: start;
@@ -100,7 +101,7 @@ h3 { font-family: var(--font-display); font-size: clamp(18px, 1.5vw, 24px); font
 .label-muted { font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
 
 /* tables */
-table { width: 100%; border-collapse: collapse; font-size: clamp(14px, 1.1vw, 17px); }
+table { width: 100%; max-width: 100%; border-collapse: collapse; font-size: clamp(14px, 1.1vw, 17px); }
 th, td { text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--border); }
 th { font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); font-weight: 500; border-bottom-color: var(--accent); }
 .light td { color: var(--fg); }

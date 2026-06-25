@@ -56,6 +56,7 @@
       flex: 0 0 100vw;
       width: 100vw;
       height: 100vh;
+      min-width: 0;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -113,6 +114,7 @@
       font-size: clamp(0.95rem, 1.6vw, 1.15rem);
       line-height: 1.55;
       color: var(--fg-2);
+      overflow-wrap: break-word;
     }
 
     .slide ul {
@@ -153,7 +155,7 @@
     }
 
     /* Tables */
-    .tbl { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 14px; }
+    .tbl { width: 100%; max-width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 14px; }
     .tbl th {
       text-align: left;
       font-family: var(--font-display);
