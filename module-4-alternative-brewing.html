@@ -62,6 +62,10 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--fg); o
 .btn:hover { opacity: 0.85; transform: translateY(-1px); }
 .btn-outline { background: transparent; color: var(--fg); border: 1px solid var(--border); }
 .btn-outline:hover { background: var(--surface); }
+.steps { display:flex;flex-direction:column;gap:clamp(12px,1.5vw,20px);margin-top:clamp(14px,2vw,24px) }
+.step { display:flex;align-items:flex-start;gap:clamp(12px,1.5vw,18px) }
+.step-num { flex-shrink:0;width:clamp(30px,3vw,38px);height:clamp(30px,3vw,38px);border-radius:50%;background:var(--accent);color:#111;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-weight:700;font-size:clamp(13px,1.1vw,16px) }
+.step p { flex:1;font-size:clamp(0.85rem,1.3vw,1rem);line-height:1.5;color:var(--fg-2) }
 </style>
 </head>
 <body>
@@ -224,7 +228,26 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--fg); o
     </div>
   </section>
 
-  <!-- 10 Резюме -->
+  <!-- 10 Практика: Один сорт — три метода -->
+  <section class="slide dark" data-screen-label="10 Practice">
+    <h2>Практика: Один сорт — три метода</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <p>Возьмите один кофе. Приготовьте на V60, френч-прессе и Aeropress.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <p>Сравните: кислотность, тело, прозрачность, сладость.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <p>Запишите, какой метод раскрыл сорт лучше и почему.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 Резюме -->
   <section class="slide light" data-screen-label="10 Summary">
     <h2>Резюме</h2>
     <div class="takeaway-grid" style="margin-left: auto; margin-right: auto;">
@@ -235,7 +258,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--fg); o
     </div>
   </section>
 
-  <!-- 11 Контрольные вопросы -->
+  <!-- 12 Контрольные вопросы -->
   <section class="slide dark" data-screen-label="11 Quiz">
     <h2>Контрольные вопросы</h2>
     <ul style="margin-top: 20px;">

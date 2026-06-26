@@ -186,6 +186,10 @@ th { font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; 
 .btn:hover { opacity: 0.85; transform: translateY(-1px); }
 .btn-outline { background: transparent; color: var(--fg); border: 1px solid var(--border); }
 .btn-outline:hover { background: var(--surface); }
+.steps { display:flex;flex-direction:column;gap:clamp(12px,1.5vw,20px);margin-top:clamp(14px,2vw,24px) }
+.step { display:flex;align-items:flex-start;gap:clamp(12px,1.5vw,18px) }
+.step-num { flex-shrink:0;width:clamp(30px,3vw,38px);height:clamp(30px,3vw,38px);border-radius:50%;background:var(--accent);color:#111;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-weight:700;font-size:clamp(13px,1.1vw,16px) }
+.step p { flex:1;font-size:clamp(0.85rem,1.3vw,1rem);line-height:1.5;color:var(--fg-2) }
 </style>
 </head>
 <body>
@@ -435,7 +439,27 @@ th { font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; 
   </div>
 </div>
 
-<!-- 14 - Резюме 1 -->
+<!-- 14 - Практика: Чайная слепая -->
+<div class="slide dark">
+  <div class="label mb-24">Практика</div>
+  <h2>Чайная слепая</h2>
+  <div class="steps mt-24">
+    <div class="step">
+      <div class="step-num">1</div>
+      <p>Получите 4 образца чая вслепую (белый, зелёный, улун, красный).</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <p>Определите тип ферментации по цвету настоя для каждого.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <p>Угадайте температуру заваривания и страну происхождения.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 15 - Резюме 1 -->
 <div class="slide light">
   <div class="label mb-24">Резюме</div>
   <h2>Главное</h2>
@@ -457,7 +481,7 @@ th { font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; 
   </div>
 </div>
 
-<!-- 16 - Контрольные вопросы -->
+<!-- 17 - Контрольные вопросы -->
 <div class="slide dark">
   <h2>Контрольные вопросы</h2>
   <ul>
@@ -468,7 +492,7 @@ th { font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; 
   </ul>
 </div>
 
-<!-- 17 - Завершение -->
+<!-- 18 - Завершение -->
 <div class="slide light center">
   <h1 style="font-size:clamp(2rem,5vw,3.6rem);">Спасибо за внимание!</h1>
   <p class="subtitle">Центр профессионального кофе</p>

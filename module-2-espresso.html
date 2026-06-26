@@ -545,6 +545,10 @@ tbody td:first-child {
 .btn:hover { opacity: 0.85; transform: translateY(-1px); }
 .btn-outline { background: transparent; color: var(--fg); border: 1px solid var(--border); }
 .btn-outline:hover { background: var(--surface); }
+.steps { display:flex;flex-direction:column;gap:clamp(12px,1.5vw,20px);margin-top:clamp(14px,2vw,24px) }
+.step { display:flex;align-items:flex-start;gap:clamp(12px,1.5vw,18px) }
+.step-num { flex-shrink:0;width:clamp(30px,3vw,38px);height:clamp(30px,3vw,38px);border-radius:50%;background:var(--accent);color:#111;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-weight:700;font-size:clamp(13px,1.1vw,16px) }
+.step p { flex:1;font-size:clamp(0.85rem,1.3vw,1rem);line-height:1.5;color:var(--fg-2) }
 </style>
 </head>
 <body>
@@ -552,7 +556,7 @@ tbody td:first-child {
 <!-- 01 :: Cover -->
 <section class="slide slide-dark slide-center">
   <div class="slide-content">
-    <div class="slide-number reveal">01 / 11</div>
+    <div class="slide-number reveal">01 / 13</div>
     <div class="accent-bar reveal"></div>
     <h1 class="reveal">Модуль 2</h1>
     <h2 class="reveal" style="font-weight:600;font-size:clamp(1.1rem,2.8vw,2rem);color:var(--fg-2);margin-top:0;">Эспрессо и&nbsp;кофемашина</h2>
@@ -563,7 +567,7 @@ tbody td:first-child {
 <!-- 02 :: Техника безопасности -->
 <section class="slide slide-light">
   <div class="slide-content">
-    <div class="slide-number reveal">02 / 11</div>
+    <div class="slide-number reveal">02 / 13</div>
     <div class="accent-bar reveal"></div>
     <h2 class="reveal">Техника безопасности</h2>
     <div class="grid grid-2 reveal" style="margin-top:var(--element-gap);">
@@ -590,7 +594,7 @@ tbody td:first-child {
 <!-- 03 :: Устройство кофемашины -->
 <section class="slide slide-dark">
   <div class="slide-content">
-    <div class="slide-number reveal">03 / 11</div>
+    <div class="slide-number reveal">03 / 13</div>
     <div class="accent-bar reveal"></div>
     <h2 class="reveal">Устройство кофемашины</h2>
     <div class="grid grid-3 reveal" style="margin-top:var(--element-gap);">
@@ -625,7 +629,7 @@ tbody td:first-child {
 <!-- 04 :: Устройство кофемолки -->
 <section class="slide slide-dark">
   <div class="slide-content">
-    <div class="slide-number reveal">04 / 11</div>
+    <div class="slide-number reveal">04 / 13</div>
     <div class="accent-bar reveal"></div>
     <h2 class="reveal">Устройство кофемолки</h2>
     <div class="grid grid-3 reveal" style="margin-top:var(--element-gap);">
@@ -656,7 +660,7 @@ tbody td:first-child {
 <!-- 05 :: Стандарты SCA -->
 <section class="slide slide-light">
   <div class="slide-content">
-    <div class="slide-number reveal">05 / 11</div>
+    <div class="slide-number reveal">05 / 13</div>
     <div class="accent-bar reveal"></div>
     <h2 class="reveal">Стандарты SCA</h2>
     <ul class="feature-list reveal" style="margin-top:var(--element-gap);">
@@ -673,7 +677,7 @@ tbody td:first-child {
 <!-- 06 :: Влияние параметров -->
 <section class="slide slide-dark">
   <div class="slide-content">
-    <div class="slide-number reveal">06 / 11</div>
+    <div class="slide-number reveal">06 / 13</div>
     <div class="accent-bar reveal"></div>
     <h2 class="reveal">Влияние параметров на вкус</h2>
     <div class="table-wrap reveal" style="margin-top:var(--element-gap);">
@@ -725,7 +729,7 @@ tbody td:first-child {
 <!-- 07 :: Классические напитки -->
 <section class="slide slide-light">
   <div class="slide-content">
-    <div class="slide-number reveal">07 / 11</div>
+    <div class="slide-number reveal">07 / 13</div>
     <div class="accent-bar reveal"></div>
     <h2 class="reveal">Классические напитки на эспрессо</h2>
     <div class="grid grid-3 reveal" style="margin-top:var(--element-gap);">
@@ -760,7 +764,7 @@ tbody td:first-child {
 <!-- 08 :: Работа с паром -->
 <section class="slide slide-dark">
   <div class="slide-content">
-    <div class="slide-number reveal">08 / 11</div>
+    <div class="slide-number reveal">08 / 13</div>
     <div class="accent-bar reveal"></div>
     <h2 class="reveal">Работа с паром</h2>
     <div class="steps reveal" style="margin-top:var(--element-gap);">
@@ -806,7 +810,7 @@ tbody td:first-child {
 <!-- 09 :: Глоссарий -->
 <section class="slide slide-light">
   <div class="slide-content">
-    <div class="slide-number reveal">09 / 11</div>
+    <div class="slide-number reveal">09 / 13</div>
     <div class="accent-bar reveal"></div>
     <h2 class="reveal">Глоссарий</h2>
     <div class="grid grid-2 reveal" style="margin-top:var(--element-gap);gap:clamp(0.6rem,1.2vw,1rem);">
@@ -834,10 +838,37 @@ tbody td:first-child {
   </div>
 </section>
 
-<!-- 10 :: Резюме -->
+<!-- 10 :: Практика: Калибровка за 5 попыток -->
+<section class="slide slide-light">
+  <div class="slide-content">
+    <div class="slide-number reveal">10 / 13</div>
+    <div class="accent-bar reveal"></div>
+    <h2 class="reveal">Практика: Калибровка за 5 попыток</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <p>Старт: 18 г, помол на глаз. Засеките время пролива.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <p>Если &lt;20 сек — мельче. Если &gt;35 сек — крупнее. Повторите.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <p>После 3-й попытки оцените вкус: каналы, недоэкстракция, переэкстракция.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <p>Запишите финальные параметры как эталон для этого сорта.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 :: Резюме -->
 <section class="slide slide-dark">
   <div class="slide-content">
-    <div class="slide-number reveal">10 / 11</div>
+    <div class="slide-number reveal">11 / 13</div>
     <div class="accent-bar reveal"></div>
     <h2 class="reveal">Резюме</h2>
     <div class="grid grid-5 reveal" style="margin-top:var(--element-gap);">
@@ -891,7 +922,7 @@ tbody td:first-child {
 
 <!-- Chrome elements -->
 <div class="deck-progress" id="deck-progress" aria-hidden></div>
-<div class="deck-counter" id="deck-counter">1 / 11</div>
+<div class="deck-counter" id="deck-counter">1 / 13</div>
 <div class="deck-hint">← → · scroll · swipe</div>
 
 <script>
