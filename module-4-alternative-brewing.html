@@ -41,9 +41,9 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--fg); o
 .pipeline { display: flex; gap: 12px; margin-top: 20px; align-items: stretch; }
 .pipeline .step { flex: 1; background: rgba(250, 255, 105, 0.04); border: 1px solid var(--border); border-radius: 8px; padding: 18px; position: relative; }
 .slide.light .pipeline .step { background: rgba(255, 255, 255, 0.03); }
-.pipeline .step .step-num { font-family: var(--font-mono); font-size: 11px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; }
-.pipeline .step h3 { margin: 6px 0 8px; font-size: clamp(0.95rem, 1.5vw, 1.15rem); }
-.pipeline .step p { font-size: 13px; color: var(--fg-2); }
+.pipeline .step .step-num { display: inline-flex; width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: #111; align-items: center; justify-content: center; font-family: var(--font-mono); font-weight: 700; font-size: 12px; vertical-align: middle; margin-right: 8px; flex-shrink: 0; }
+.pipeline .step h3 { display: inline; font-size: clamp(0.95rem, 1.5vw, 1.15rem); vertical-align: middle; }
+.pipeline .step p { margin-top: 10px; font-size: 13px; color: var(--fg-2); line-height: 1.5; max-width: 90%; }
 .terroir-note { margin-top: 16px; padding: 12px 16px; border-left: 3px solid var(--accent); background: rgba(250, 255, 105, 0.04); border-radius: 0 8px 8px 0; font-size: 14px; font-style: italic; color: var(--fg-2); }
 .badge { display: inline-block; font-family: var(--font-mono); font-size: 12px; padding: 3px 10px; border-radius: 9999px; background: var(--accent); color: var(--bg); font-weight: 500; letter-spacing: 0.04em; }
 .badge-sm { display: inline-block; font-family: var(--font-mono); font-size: 10px; padding: 2px 8px; border-radius: 9999px; background: rgba(250, 255, 105, 0.12); color: var(--accent); letter-spacing: 0.04em; }
@@ -137,11 +137,27 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--fg); o
   <!-- 05 Помол -->
   <section class="slide dark" data-screen-label="05 Grind Size">
     <h2>Помол для разных методов</h2>
-    <div class="pipeline" style="flex-direction: column; gap: 8px;">
-      <div class="step" style="flex: none;"><span class="step-num">Эспрессо</span><p>Очень мелкий (как мука, 200–300 мкм). Максимальное давление, плотная таблетка.</p></div>
-      <div class="step" style="flex: none;"><span class="step-num">Пуровер (V60, Kalita)</span><p>Средний (как морская соль, 600–800 мкм). Контролируемый пролив, чистота вкуса.</p></div>
-      <div class="step" style="flex: none;"><span class="step-num">Френч-пресс</span><p>Крупный (как хлебные крошки, 800–1000 мкм). Медленная экстракция, плотное тело.</p></div>
-      <div class="step" style="flex: none;"><span class="step-num">Cold Brew</span><p>Очень крупный (1200–1500 мкм). Долгая экстракция в холодной воде, 12–24 ч.</p></div>
+    <div class="grid-2" style="margin-top: 16px;">
+      <div class="grid-item">
+        <span class="badge-sm">Эспрессо</span>
+        <h3>Очень мелкий</h3>
+        <p>Как мука, 200–300 мкм. Максимальное давление, плотная таблетка.</p>
+      </div>
+      <div class="grid-item">
+        <span class="badge-sm">Пуровер (V60, Kalita)</span>
+        <h3>Средний</h3>
+        <p>Как морская соль, 600–800 мкм. Контролируемый пролив, чистота вкуса.</p>
+      </div>
+      <div class="grid-item">
+        <span class="badge-sm">Френч-пресс</span>
+        <h3>Крупный</h3>
+        <p>Как хлебные крошки, 800–1000 мкм. Медленная экстракция, плотное тело.</p>
+      </div>
+      <div class="grid-item">
+        <span class="badge-sm">Cold Brew</span>
+        <h3>Очень крупный</h3>
+        <p>1200–1500 мкм. Долгая экстракция в холодной воде, 12–24 ч.</p>
+      </div>
     </div>
   </section>
 
@@ -168,11 +184,25 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--fg); o
   </section>
 
   <!-- 07 Протокол V60 — 2 -->
-  <section class="slide hero dark center" data-screen-label="07 V60 Protocol 2">
+  <section class="slide light" data-screen-label="07 V60 Protocol 2">
     <h2>Протокол V60 · Пролив</h2>
-    <p class="subtitle" style="margin-bottom: 1em;">04 — Импульсный пролив: 3–4 порции по 60–70 мл, круговыми движениями от центра к краям</p>
-    <p class="subtitle" style="font-size: clamp(1rem, 1.8vw, 1.2rem);">05 — Общее время: 2:30–3:00 мин</p>
-    <p class="subtitle">06 — Результат: чистый, яркий, сбалансированный вкус</p>
+    <div class="pipeline">
+      <div class="step">
+        <span class="step-num">04</span>
+        <h3>Импульсный пролив</h3>
+        <p>3–4 порции по 60–70 мл, круговыми движениями от центра к краям. Контроль темпа — 3–4 мл/с.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">05</span>
+        <h3>Общее время</h3>
+        <p>2:30–3:00 мин от начала блума до последнего импульса. Если быстрее — увеличьте помол, если дольше — уменьшите.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">06</span>
+        <h3>Результат</h3>
+        <p>Чистый, яркий, сбалансированный вкус. Прозрачное тело, отчётливая кислотность, долгое послевкусие.</p>
+      </div>
+    </div>
   </section>
 
   <!-- 08 Френч-пресс -->
@@ -228,7 +258,30 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--fg); o
     </div>
   </section>
 
-  <!-- 10 Практика: Один сорт — три метода -->
+  <!-- 10 Современные методы фильтрации -->
+  <section class="slide dark" data-screen-label="10 Modern Filters">
+    <h2>Современные методы фильтрации</h2>
+    <div class="grid-2" style="margin-top: 16px;">
+      <div class="grid-item">
+        <h3>Orea V3 / V4</h3>
+        <p>Конус 60° с плоским дном и 4 каналами. Равномерный пролив, меньше каналов. Использует Kalita 185/155 фильтры. Компактный, для путешествий.</p>
+      </div>
+      <div class="grid-item">
+        <h3>Hario Switch</h3>
+        <p>V60 + иммерсия в одной воронке. Рычаг перекрывает слив. Можно делать иммерсию, пуровер или комбинировать. Гибкий контроль экстракции.</p>
+      </div>
+      <div class="grid-item">
+        <h3>Hario Drip Assist</h3>
+        <p>Насадка-распределитель на V60. Имитирует ручной пролив, капли падают по спирали. Стабильный результат без навыка. Идеально для новичков.</p>
+      </div>
+      <div class="grid-item">
+        <h3>Next Level / Pulsar</h3>
+        <p>Плоскодонные дрипперы с регулируемым потоком. Полный контроль над экстракцией. Активно используются в спешелти-соревнованиях.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 Практика: Один сорт — три метода -->
   <section class="slide dark" data-screen-label="10 Practice">
     <h2>Практика: Один сорт — три метода</h2>
     <div class="steps">
@@ -247,7 +300,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--fg); o
     </div>
   </section>
 
-  <!-- 11 Резюме -->
+  <!-- 12 Резюме -->
   <section class="slide light" data-screen-label="10 Summary">
     <h2>Резюме</h2>
     <div class="takeaway-grid" style="margin-left: auto; margin-right: auto;">
@@ -258,7 +311,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--fg); o
     </div>
   </section>
 
-  <!-- 12 Контрольные вопросы -->
+  <!-- 13 Контрольные вопросы -->
   <section class="slide dark" data-screen-label="11 Quiz">
     <h2>Контрольные вопросы</h2>
     <ul style="margin-top: 20px;">
@@ -269,7 +322,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--fg); o
     </ul>
   </section>
 
-  <!-- 12 Завершение -->
+  <!-- 14 Завершение -->
   <section class="slide hero light center" data-screen-label="12 End">
     <h1>Спасибо за внимание!</h1>
     <p class="subtitle" style="margin-top: 1em;">Центр профессионального кофе</p>

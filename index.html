@@ -58,8 +58,17 @@ a{color:inherit;text-decoration:none}
 .footer{border-top:1px solid var(--border);padding:24px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-top:auto}
 .footer-copy{font-size:0.8125rem;color:var(--muted)}
 .footer-hint{font-size:0.75rem;color:var(--muted);font-family:var(--font-mono);letter-spacing:0.04em}
-@media(max-width:768px){.header h1{font-size:2.25rem}.header{padding:36px 0 28px}.grid{grid-template-columns:repeat(2,1fr);gap:16px;padding:36px 0 44px}.card-body{padding:16px 20px 20px}.card-title{font-size:1.1875rem}}
-@media(max-width:480px){.header h1{font-size:1.75rem}.header-logo{margin-bottom:20px}.header-subtitle{font-size:1rem}.grid{grid-template-columns:1fr;gap:14px;padding:28px 0 36px}.card-title{font-size:1.125rem}.footer{flex-direction:column;align-items:flex-start}}
+.tools-section{padding:40px 0 48px;border-top:1px solid var(--border)}
+.tools-header{font-weight:700;font-size:1.25rem;margin-bottom:24px;color:var(--accent);font-family:var(--font-display);letter-spacing:-0.02em}
+.tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tool-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px;display:flex;align-items:flex-start;gap:14px;transition:transform 0.2s cubic-bezier(0.2,0,0,1),border-color 0.2s ease;text-decoration:none;color:inherit}
+.tool-card:hover{border-color:var(--accent);transform:translateY(-3px)}
+.tool-icon{font-size:1.5rem;line-height:1;flex-shrink:0;margin-top:2px}
+.tool-body{flex:1;min-width:0}
+.tool-title{font-weight:600;font-size:0.9375rem;margin-bottom:4px;color:var(--fg)}
+.tool-desc{font-size:0.8125rem;line-height:1.5;color:var(--fg-2)}
+@media(max-width:768px){.header h1{font-size:2.25rem}.header{padding:36px 0 28px}.grid{grid-template-columns:repeat(2,1fr);gap:16px;padding:36px 0 44px}.card-body{padding:16px 20px 20px}.card-title{font-size:1.1875rem}.tools-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.header h1{font-size:1.75rem}.header-logo{margin-bottom:20px}.header-subtitle{font-size:1rem}.grid{grid-template-columns:1fr;gap:14px;padding:28px 0 36px}.card-title{font-size:1.125rem}.tools-section{padding:28px 0 36px}.tools-grid{grid-template-columns:1fr}.footer{flex-direction:column;align-items:flex-start}}
 </style>
 </head>
 <body>
@@ -68,16 +77,42 @@ a{color:inherit;text-decoration:none}
     <div class="header-logo">Центр профессионального мастерства</div>
     <h1>Мастерство приготовления кофе и чая</h1>
     <p class="header-subtitle">От ботанических сортов до авторского напитка — полный курс для бариста</p>
-    <p class="header-meta">7 модулей · 94 слайда · очно и онлайн</p>
+    <p class="header-meta">7 модулей · 100 слайдов · очно и онлайн</p>
   </header>
   <div class="grid">
-    <a href="module-0-coffee-tea-basics.html" class="card"><div class="card-stripe" style="background:var(--m0)"></div><div class="card-body"><div class="card-meta"><span class="card-module">Вводный модуль</span><span class="card-hours">2 ч</span></div><h2 class="card-title">Основы кофе и чая</h2><p class="card-desc">Арабика vs Робуста, методы обработки, степени обжарки, классификация чая, стандарты РФ</p><div class="card-tags"><span class="card-tag">ботаника</span><span class="card-tag">SCA</span><span class="card-tag">обжарка</span><span class="card-tag">терруар</span></div><div class="card-footer"><span class="card-slides">12 слайдов</span><span class="card-arrow">→</span></div></div></a>
+    <a href="module-0-coffee-tea-basics.html" class="card"><div class="card-stripe" style="background:var(--m0)"></div><div class="card-body"><div class="card-meta"><span class="card-module">Вводный модуль</span><span class="card-hours">2 ч</span></div><h2 class="card-title">Основы кофе и чая</h2><p class="card-desc">Арабика vs Робуста, методы обработки, степени обжарки, классификация чая, стандарты РФ</p><div class="card-tags"><span class="card-tag">ботаника</span><span class="card-tag">SCA</span><span class="card-tag">обжарка</span><span class="card-tag">терруар</span></div><div class="card-footer"><span class="card-slides">15 слайдов</span><span class="card-arrow">→</span></div></div></a>
     <a href="module-1-cupping.html" class="card"><div class="card-stripe" style="background:var(--m1)"></div><div class="card-body"><div class="card-meta"><span class="card-module">Модуль 1</span><span class="card-hours">2 ч</span></div><h2 class="card-title">Каппинг и органолептика</h2><p class="card-desc">Сенсорное восприятие, колесо вкусов SCA, дегустационный лист, протокол каппинга</p><div class="card-tags"><span class="card-tag">сенсорика</span><span class="card-tag">SCA</span><span class="card-tag">дегустация</span><span class="card-tag">спешелти</span></div><div class="card-footer"><span class="card-slides">13 слайдов</span><span class="card-arrow">→</span></div></div></a>
     <a href="module-2-espresso.html" class="card"><div class="card-stripe" style="background:var(--m2)"></div><div class="card-body"><div class="card-meta"><span class="card-module">Модуль 2</span><span class="card-hours">3 ч</span></div><h2 class="card-title">Эспрессо и кофемашина</h2><p class="card-desc">Техника безопасности, устройство кофемашины и кофемолки, стандарты SCA, классические напитки</p><div class="card-tags"><span class="card-tag">эспрессо</span><span class="card-tag">SCA</span><span class="card-tag">кофемашина</span><span class="card-tag">безопасность</span></div><div class="card-footer"><span class="card-slides">13 слайдов</span><span class="card-arrow">→</span></div></div></a>
-    <a href="module-3-latte-art.html" class="card"><div class="card-stripe" style="background:var(--m3)"></div><div class="card-body"><div class="card-meta"><span class="card-module">Модуль 3</span><span class="card-hours">2 ч</span></div><h2 class="card-title">Латте-арт</h2><p class="card-desc">Устройство стимера, физика вспенивания, текстуры молока, базовые элементы, растительное молоко</p><div class="card-tags"><span class="card-tag">латтеарт</span><span class="card-tag">молоко</span><span class="card-tag">стимер</span><span class="card-tag">питчер</span></div><div class="card-footer"><span class="card-slides">13 слайдов</span><span class="card-arrow">→</span></div></div></a>
-    <a href="module-4-alternative-brewing.html" class="card"><div class="card-stripe" style="background:var(--m4)"></div><div class="card-body"><div class="card-meta"><span class="card-module">Модуль 4</span><span class="card-hours">2 ч</span></div><h2 class="card-title">Альтернативные методы заваривания</h2><p class="card-desc">Вкусовой баланс, иммерсия vs пуровер, V60, френч-пресс, Chemex, Kalita, Aeropress</p><div class="card-tags"><span class="card-tag">пуровер</span><span class="card-tag">V60</span><span class="card-tag">френчпресс</span><span class="card-tag">иммерсия</span></div><div class="card-footer"><span class="card-slides">13 слайдов</span><span class="card-arrow">→</span></div></div></a>
-    <a href="module-5-tea-mastery.html" class="card"><div class="card-stripe" style="background:var(--m5)"></div><div class="card-body"><div class="card-meta"><span class="card-module">Модуль 5</span><span class="card-hours">3 ч</span></div><h2 class="card-title">Мастерство чая</h2><p class="card-desc">Классификация, температура, методы заваривания, чайная церемония Пин Ча, утварь</p><div class="card-tags"><span class="card-tag">чай</span><span class="card-tag">проливы</span><span class="card-tag">ПинЧа</span><span class="card-tag">пуэр</span></div><div class="card-footer"><span class="card-slides">18 слайдов</span><span class="card-arrow">→</span></div></div></a>
-    <a href="module-6-final-exam.html" class="card"><div class="card-stripe" style="background:var(--m6)"></div><div class="card-body"><div class="card-meta"><span class="card-module">Модуль 6</span><span class="card-hours">1 ч</span></div><h2 class="card-title">Итоговая аттестация</h2><p class="card-desc">Разработка и презентация авторского напитка, критерии оценки</p><div class="card-tags"><span class="card-tag">аттестация</span><span class="card-tag">авторскийнапиток</span><span class="card-tag">экзамен</span></div><div class="card-footer"><span class="card-slides">11 слайдов</span><span class="card-arrow">→</span></div></div></a>
+    <a href="module-3-latte-art.html" class="card"><div class="card-stripe" style="background:var(--m3)"></div><div class="card-body"><div class="card-meta"><span class="card-module">Модуль 3</span><span class="card-hours">2 ч</span></div><h2 class="card-title">Латте-арт</h2><p class="card-desc">Устройство стимера, физика вспенивания, текстуры молока, базовые элементы, растительное молоко</p><div class="card-tags"><span class="card-tag">латтеарт</span><span class="card-tag">молоко</span><span class="card-tag">стимер</span><span class="card-tag">питчер</span></div><div class="card-footer"><span class="card-slides">14 слайдов</span><span class="card-arrow">→</span></div></div></a>
+    <a href="module-4-alternative-brewing.html" class="card"><div class="card-stripe" style="background:var(--m4)"></div><div class="card-body"><div class="card-meta"><span class="card-module">Модуль 4</span><span class="card-hours">2 ч</span></div><h2 class="card-title">Альтернативные методы заваривания</h2><p class="card-desc">Вкусовой баланс, иммерсия vs пуровер, V60, френч-пресс, Chemex, Kalita, Aeropress</p><div class="card-tags"><span class="card-tag">пуровер</span><span class="card-tag">V60</span><span class="card-tag">френчпресс</span><span class="card-tag">иммерсия</span></div><div class="card-footer"><span class="card-slides">14 слайдов</span><span class="card-arrow">→</span></div></div></a>
+    <a href="module-5-tea-mastery.html" class="card"><div class="card-stripe" style="background:var(--m5)"></div><div class="card-body"><div class="card-meta"><span class="card-module">Модуль 5</span><span class="card-hours">3 ч</span></div><h2 class="card-title">Мастерство чая</h2><p class="card-desc">Классификация, температура, методы заваривания, чайная церемония Пин Ча, утварь</p><div class="card-tags"><span class="card-tag">чай</span><span class="card-tag">проливы</span><span class="card-tag">ПинЧа</span><span class="card-tag">пуэр</span></div><div class="card-footer"><span class="card-slides">19 слайдов</span><span class="card-arrow">→</span></div></div></a>
+    <a href="module-6-final-exam.html" class="card"><div class="card-stripe" style="background:var(--m6)"></div><div class="card-body"><div class="card-meta"><span class="card-module">Модуль 6</span><span class="card-hours">1 ч</span></div><h2 class="card-title">Итоговая аттестация</h2><p class="card-desc">Разработка и презентация авторского напитка, критерии оценки</p><div class="card-tags"><span class="card-tag">аттестация</span><span class="card-tag">авторскийнапиток</span><span class="card-tag">экзамен</span></div><div class="card-footer"><span class="card-slides">12 слайдов</span><span class="card-arrow">→</span></div></div></a>
+  </div>
+  <div class="tools-section">
+    <div class="tools-header">Полезные инструменты</div>
+    <div class="tools-grid">
+      <a href="https://romkalan.github.io/CuppingPro/" class="tool-card" target="_blank">
+        <div class="tool-icon">☕</div>
+        <div class="tool-body">
+          <div class="tool-title">CuppingPro</div>
+          <div class="tool-desc">Дегустационный лист SCA — оценка кофе по протоколу Specialty Coffee Association</div>
+        </div>
+      </a>
+      <a href="https://romkalan.github.io/coffee-calc/" class="tool-card" target="_blank">
+        <div class="tool-icon">⚙️</div>
+        <div class="tool-body">
+          <div class="tool-title">Coffee Calc</div>
+          <div class="tool-desc">Калькулятор рецептов: пропорции воды и кофе, температура, время экстракции</div>
+        </div>
+      </a>
+      <a href="https://t.me/CoffeeAndTeaBrewingChannel" class="tool-card" target="_blank">
+        <div class="tool-icon">📢</div>
+        <div class="tool-body">
+          <div class="tool-title">Telegram-канал</div>
+          <div class="tool-desc">Новости, дайджесты, анонсы курсов и полезные материалы по кофе и чаю</div>
+        </div>
+      </a>
+    </div>
   </div>
 </div>
 <footer class="footer"><div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;width:100%"><span class="footer-copy">© 2026 Центр профессионального кофе</span><span class="footer-hint">← → для навигации</span></div></footer>
